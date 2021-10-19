@@ -3,7 +3,7 @@
 ## No que consiste
 Este repositorio é onde estara alocado o projeto de PAs(Programação de Aplicação para Servidor), neste caso consiste num projeto para um díspositivo móvel/website, que permite gerir as senhas para o réfeitorio do IPBEJA.
 
-## Equipa (h2)
+## Equipa
 * Jorick Meijde
 * Ricardo Coelho
 
@@ -17,7 +17,7 @@ Este repositorio é onde estara alocado o projeto de PAs(Programação de Aplica
 * Ver detalhes do menu;
 * Simular um pagamento;
 
-### Requisitos Avançados (h3)
+### Requisitos Avançados
 * Adicionar métodos de Pagamento;
 * Transferir senhas;
 * Sistema de multa, paga mais no próprio dia;
