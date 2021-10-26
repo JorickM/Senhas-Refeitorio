@@ -2,16 +2,18 @@ package com.example.senhas_refeitorio;
 
 import android.content.Context;
 
+
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+
 @Database(entities = {Meals.class, Weekdays.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    public abstract MealsDao getMeaksDao();
+    public abstract MealsDao getMealsDao();
     public abstract WeekdaysDao getWeekdaysDao();
 
 
@@ -21,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class,
-                    "solidaryBankDB")
+                    "mealsDB")
                     .allowMainThreadQueries()
                     .addCallback(new Callback() {
                         @Override
@@ -35,12 +37,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
                             //insert into Weekdays
-                            db.execSQL("INSERT INTO Weekdays (codWeekday, weekdayName,  , local, typeUser) VALUES (1, 'admin', 'admin', 'teste', '1')");
-
-                            //insert into donations
-                            db.execSQL("INSERT INTO Donation (codDonation, amount, codCompany, codFamily, flg_Pendente) VALUES (1, 2000, 1, 1, 0)");
-                            db.execSQL("INSERT INTO Donation (codDonation, amount, codCompany, codFamily, flg_Pendente) VALUES (2, 4000, 1, 2, 1)");
-
+                         //   db.execSQL("INSERT INTO Weekdays (codWeekday, weekdayName  , local, typeUser) VALUES (1, 'admin', 'admin', 'teste', '1')");
 
                         }
                     })
