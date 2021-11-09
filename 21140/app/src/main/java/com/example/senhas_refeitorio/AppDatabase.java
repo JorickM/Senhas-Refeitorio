@@ -30,14 +30,13 @@ public abstract class AppDatabase extends RoomDatabase {
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
                             //insert into Meals
-                            db.execSQL("INSERT INTO Meals (codMeal, mainDish, soup, dessert, codWeekday ,typeMeal) VALUES (1, 'Ensopado de Borrego','Creme de Cenoura', 'Laranja', 1)");
-                            db.execSQL("INSERT INTO Meals (codMeal, mainDish, soup, dessert, codWeekday ,typeMeal) VALUES (2, 'Bacalhau com Natas','Creme de Cenoura', 'Pudim', 2)");
-                            db.execSQL("INSERT INTO Meals (codMeal, mainDish, soup, dessert, codWeekday ,typeMeal) VALUES (3, 'Chili de Legumes','Creme de Cenoura', 'Maça', 3)");
+                            db.execSQL("INSERT INTO Meals (MealId, mainDish, soup, dessert, codWeekday ,typeMeal) VALUES (1, 'Ensopado de Borrego','Creme de Cenoura', 'Laranja', 1)");
+                            db.execSQL("INSERT INTO Meals (MealId, mainDish, soup, dessert, codWeekday ,typeMeal) VALUES (2, 'Bacalhau com Natas','Creme de Cenoura', 'Pudim', 2)");
+                            db.execSQL("INSERT INTO Meals (MealId, mainDish, soup, dessert, codWeekday ,typeMeal) VALUES (3, 'Chili de Legumes','Creme de Cenoura', 'Maça', 3)");
 
 
-
-                            //insert into Weekdays
-                         //   db.execSQL("INSERT INTO Weekdays (codWeekday, weekdayName  , local, typeUser) VALUES (1, 'admin', 'admin', 'teste', '1')");
+                           // insert into Weekdays
+                           db.execSQL("INSERT INTO Weekdays (codWeekday, weekdayName  , local, typeUser) VALUES (1, 'admin', 'admin', 'teste', '1')");
 
                         }
                     })

@@ -1,7 +1,8 @@
 package com.example.senhas_refeitorio;
 
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+@Entity
 public class Meals {
     @PrimaryKey(autoGenerate = true)
     private long codMeal;

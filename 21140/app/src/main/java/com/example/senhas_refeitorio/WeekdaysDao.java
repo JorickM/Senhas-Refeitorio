@@ -23,7 +23,6 @@ import java.util.List;
         @Query("SELECT * FROM Weekdays")
         List<Meals> getAll();
 
-
         @Insert
         void add(Weekdays weekdays);
 
