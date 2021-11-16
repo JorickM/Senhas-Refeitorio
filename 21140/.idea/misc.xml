@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/Senhas-Refeitorio/21140/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20572916666666666" />
         <entry key="..\:/GitHub/Senhas-Refeitorio/21140/app/src/main/res/layout/activity_main.xml" value="0.259375" />
+        <entry key="..\:/GitHub/Senhas-Refeitorio/21140/app/src/main/res/layout/weekday_list_item.xml" value="0.23333333333333334" />
       </map>
     </option>
   </component>
