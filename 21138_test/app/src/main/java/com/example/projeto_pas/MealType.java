@@ -1,27 +1,27 @@
 package com.example.projeto_pas;
 
 public class MealType {
-    private long mealTypeId;
-    private String description;
+    private long id;
+    private String name;
 
-    public long getMealTypeId() {
-        return mealTypeId;
+    public long getId() {
+        return id;
     }
 
-    public void setMealTypeId(long mealTypeId) {
-        this.mealTypeId = mealTypeId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public MealType(long mealTypeId, String description) {
-        this.mealTypeId = mealTypeId;
-        this.description = description;
+    public MealType(long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }
