@@ -8,12 +8,11 @@ import androidx.room.RoomDatabase;
 
 import com.example.senhasrefeitorio.model.User;
 
-import pt.ipbeja.estig.twdm.pdm1.planetsretrofitexample.model.Planet;
 
 @Database(entities = {User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    public abstract PlanetDao getPlanetDao();
+    public abstract UserDao getUserao();
 
     private static AppDatabase INSTANCE;
 
