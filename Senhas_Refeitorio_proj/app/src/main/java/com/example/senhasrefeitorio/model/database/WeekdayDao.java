@@ -11,7 +11,7 @@ import com.example.senhasrefeitorio.model.Weekdays;
 import java.util.List;
 
 @Dao
-public interface WeekdaysDao {
+public interface WeekdayDao {
 
     @Query("SELECT * FROM Weekdays")
     List<Weekdays> getAll();

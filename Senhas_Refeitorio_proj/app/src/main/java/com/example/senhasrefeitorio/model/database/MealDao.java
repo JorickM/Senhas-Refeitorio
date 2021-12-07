@@ -11,11 +11,10 @@ import com.example.senhasrefeitorio.model.Meals;
 import java.util.List;
 
 @Dao
-public interface MealsDao {
+public interface MealDao {
 
     @Query("SELECT * FROM Meals")
     List<Meals> getAll();
-
 
     @Insert
     void add(Meals meals);

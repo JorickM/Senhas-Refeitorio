@@ -1,6 +1,5 @@
 package com.example.senhasrefeitorio.model;
 
-
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -13,15 +12,16 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private String url;
     private int typeUser;
 
-
-    public User(long codUser, String name, String email, String lastName, String password, int typeUser) {
+    public User(long codUser, String name, String lastName, String email, String password, String url, int typeUser) {
         this.codUser = codUser;
         this.name = name;
-        this.email = email;
         this.lastName = lastName;
+        this.email = email;
         this.password = password;
+        this.url = url;
         this.typeUser = typeUser;
     }
 
@@ -69,6 +69,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getTypeUser() {
