@@ -2,6 +2,7 @@ package com.example.senhasrefeitorio.model;
 
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -14,6 +15,7 @@ public class User {
     private String password;
     private int typeUser;
 
+
     public User(long codUser, String name, String email, String lastName, String password, int typeUser) {
         this.codUser = codUser;
         this.name = name;
@@ -23,6 +25,7 @@ public class User {
         this.typeUser = typeUser;
     }
 
+    @Ignore
     public User(String email, String password){
         this.email = email;
         this.password = password;
