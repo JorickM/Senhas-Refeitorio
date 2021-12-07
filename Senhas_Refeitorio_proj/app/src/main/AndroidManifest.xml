@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SenhasRefeitorio">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
