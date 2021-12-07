@@ -6,25 +6,25 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.senhasrefeitorio.model.Meals;
+import com.example.senhasrefeitorio.model.Meal;
 
 import java.util.List;
 
 @Dao
 public interface MealDao {
 
-    @Query("SELECT * FROM Meals")
-    List<Meals> getAll();
+    @Query("SELECT * FROM Meal")
+    List<Meal> getAll();
 
     @Insert
-    void add(Meals meals);
+    void add(Meal meal);
 
     @Insert
-    void add(List<Meals> mealsList);
+    void add(List<Meal> mealList);
 
     @Delete
-    void delete(Meals meals);
+    void delete(Meal meal);
 
     @Update
-    void update(Meals meals);
+    void update(Meal meal);
 }

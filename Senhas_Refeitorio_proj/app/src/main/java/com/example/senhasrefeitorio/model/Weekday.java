@@ -4,14 +4,14 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Weekdays {
+public class Weekday {
     @PrimaryKey(autoGenerate = true)
     private long codWeekday;
     private String name;
     private String date;
     private int userlimit;
 
-    public Weekdays(long codWeekday, String name, String date, int userlimit) {
+    public Weekday(long codWeekday, String name, String date, int userlimit) {
         this.codWeekday = codWeekday;
         this.name = name;
         this.date = date;

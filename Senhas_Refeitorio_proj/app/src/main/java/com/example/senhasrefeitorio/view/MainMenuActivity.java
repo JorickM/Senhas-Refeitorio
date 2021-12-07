@@ -13,6 +13,15 @@ import com.example.senhasrefeitorio.model.User;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+
+    private static final String KEY_ID = "id";
+
+    public static void startActivity(Context context, User user) {
+        Intent intent = new Intent(context, MainMenuActivity.class);
+        intent.putExtra(KEY_ID, id);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,4 +43,8 @@ public class MainMenuActivity extends AppCompatActivity {
         //Intent intent = new Intent(this, SenhaActivity.class);
         //startActivity(intent);
     }
+
+
+
+
 }

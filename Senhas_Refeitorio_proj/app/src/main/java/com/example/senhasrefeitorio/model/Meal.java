@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Meals {
+public class Meal {
     @PrimaryKey(autoGenerate = true)
     private long codMeal;
     private String mainDish;
@@ -14,7 +14,7 @@ public class Meals {
     private int typeMeal;
 
 
-    public Meals(long codMeal, String mainDish, String soup, String dessert, long codWeekday, int typeMeal) {
+    public Meal(long codMeal, String mainDish, String soup, String dessert, long codWeekday, int typeMeal) {
         this.codMeal = codMeal;
         this.mainDish = mainDish;
         this.soup = soup;

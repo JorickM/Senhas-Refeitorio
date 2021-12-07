@@ -14,8 +14,8 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-/*    @Query("SELECT userId FROM users WHERE email = :email")
-    LiveData<User> getUser(String email);*/
+    @Query("SELECT * FROM User WHERE email LIKE :email AND password LIKE :password")
+    LiveData<User> getUser(String email, String password);
 
     @Update
     void update(List<User> userList);
