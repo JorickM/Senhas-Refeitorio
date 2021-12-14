@@ -44,7 +44,4 @@ public class MainMenuActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
-
-
-
 }
