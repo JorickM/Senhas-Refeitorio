@@ -5,9 +5,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.User;
@@ -16,6 +18,7 @@ import com.example.senhasrefeitorio.viewmodel.LoginActivityViewModel;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginActivityViewModel viewModel;
+    private Context context;
 
 
     @Override
@@ -30,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         EditText insertEmail, insertPassword;
         String email, password;
 
-
-
         insertEmail = findViewById(R.id.editTextEmail);
         insertPassword = findViewById(R.id.editTextPassword);
 
@@ -44,11 +45,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(User user) {
                 if (user == null) {
-                    // User não existe
-
+                    //Toast.makeText(LoginActivity.this.context, "Dados errados!", Toast.LENGTH_LONG).show();
                 } else {
-                    // User existe
-                    
+                    MainMenuActivity.startActivity(LoginActivity.this.context, user.getCodUser());
                 }
                 // fim do login
             }
