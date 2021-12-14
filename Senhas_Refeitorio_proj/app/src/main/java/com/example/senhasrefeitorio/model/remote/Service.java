@@ -7,10 +7,11 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface Service {
-    @GET("Users/{userId}")
-    Call<User> getUser(@Path("userId") long id);
+    @GET("users/")
+    Call<List<User>> getUser(@Query("email") String email, @Query("password") String password);
 
 
 }
