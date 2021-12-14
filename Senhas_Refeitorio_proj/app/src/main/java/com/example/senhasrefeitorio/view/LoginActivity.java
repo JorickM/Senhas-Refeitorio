@@ -1,21 +1,17 @@
 package com.example.senhasrefeitorio.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.User;
-import com.example.senhasrefeitorio.model.remote.Service;
 import com.example.senhasrefeitorio.viewmodel.LoginActivityViewModel;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,14 +24,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
-
-
     }
-
 
     public void login(View view) {
         EditText insertEmail, insertPassword;
         String email, password;
+
+
 
         insertEmail = findViewById(R.id.editTextEmail);
         insertPassword = findViewById(R.id.editTextPassword);
@@ -43,18 +38,21 @@ public class LoginActivity extends AppCompatActivity {
         email = String.valueOf(insertEmail.getText());
         password = String.valueOf(insertPassword.getText());
 
-
-        this.viewModel.getUser(email,password).observe(this, new Observer<User>() {
+        // inicio do login
+        LiveData<User> userLiveData = this.viewModel.getUser(email, password);
+        Observer<User> observer = new Observer<User>() {
             @Override
             public void onChanged(User user) {
+                if (user == null) {
+                    // User não existe
 
-
-
-
-
-
+                } else {
+                    // User existe
+                    
+                }
+                // fim do login
             }
-        });
+        };
+        userLiveData.observe(this, observer);
     }
-
 }
