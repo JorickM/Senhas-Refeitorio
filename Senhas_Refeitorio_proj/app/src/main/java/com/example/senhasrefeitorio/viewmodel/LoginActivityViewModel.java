@@ -18,8 +18,12 @@ public class LoginActivityViewModel extends AndroidViewModel {
         this.repository = new UserRepository(application);
     }
 
-    public LiveData<User> getUser(String email, String password) {
-        return this.repository.getUser(email, password);
+    public LiveData<User> getUser() {
+        return this.repository.getLoggedInUser();
+    }
+
+    public void tryToLogInUser(String email, String password) {
+        this.repository.tryToLoginUser(email, password);
     }
 
 }

@@ -15,12 +15,8 @@ import com.example.senhasrefeitorio.model.User;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-
-    private static final String KEY_ID = "id";
-
-    public static void startActivity(Context context, long userId) {
+    public static void startActivity(Context context) {
         Intent intent = new Intent(context, MainMenuActivity.class);
-        intent.putExtra(KEY_ID, userId);
         context.startActivity(intent);
     }
 

@@ -24,41 +24,41 @@ public class UserRepository {
         this.context = context;
     }
 
-    public LiveData<User> getUser(String email, String password) {
-        userMutableLiveData = new MutableLiveData<>();
+    public void tryToLoginUser(String email, String password) {
+        Datasource.getUserService().getUser(email, password).enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().size() > 0) {
+                        User user1 = response.body().get(0);
+                        SessionManager.saveSession(UserRepository.this.context, user1);
+                        userMutableLiveData.postValue(user1);
+                    } else {
+                        userMutableLiveData.postValue(null);
+                    }
+                }
+            }
 
-        this.getUserInternal(email, password);
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                t.printStackTrace();
+                userMutableLiveData.postValue(null);
+            }
+        });
+    }
 
+    public LiveData<User> getLoggedInUser() {
+        this.getUserInternal();
         return userMutableLiveData;
     }
 
-    private void getUserInternal(String email, String password) {
+    private void getUserInternal() {
         User user = SessionManager.getActiveSession(this.context);
-        if (user == null) {
-            Datasource.getUserService().getUser(email, password).enqueue(new Callback<List<User>>() {
-                @Override
-                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                    if (response.isSuccessful()) {
-                        if (response.body().size() > 0) {
-                            User user1 = response.body().get(0);
-                            SessionManager.saveSession(UserRepository.this.context, user1);
-                            userMutableLiveData.postValue(user1);
-                        } else {
-                            userMutableLiveData.postValue(null);
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<User>> call, Throwable t) {
-                    t.printStackTrace();
-                    userMutableLiveData.postValue(null);
-                }
-            });
-        } else {
-            userMutableLiveData.postValue(user);
-        }
+        userMutableLiveData.postValue(user);
     }
 
+    public void logout() {
+        SessionManager.clearSession(this.context);
+    }
 
 }

@@ -18,8 +18,7 @@ import com.example.senhasrefeitorio.viewmodel.LoginActivityViewModel;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginActivityViewModel viewModel;
-    private Context context;
-
+    private boolean tryingToLogIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +26,21 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+
+        this.viewModel.getUser().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                if (user == null) {
+                    if (tryingToLogIn) {
+                        Toast.makeText(LoginActivity.this, "Dados errados!", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    MainMenuActivity.startActivity(LoginActivity.this);
+                    finish();
+                }
+                // fim do login
+            }
+        });
     }
 
     public void login(View view) {
@@ -39,19 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         email = String.valueOf(insertEmail.getText());
         password = String.valueOf(insertPassword.getText());
 
-        // inicio do login
-        LiveData<User> userLiveData = this.viewModel.getUser(email, password);
-        Observer<User> observer = new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-                if (user == null) {
-                    //Toast.makeText(LoginActivity.this.context, "Dados errados!", Toast.LENGTH_LONG).show();
-                } else {
-                    MainMenuActivity.startActivity(LoginActivity.this.context, user.getCodUser());
-                }
-                // fim do login
-            }
-        };
-        userLiveData.observe(this, observer);
+        tryingToLogIn = true;
+        this.viewModel.tryToLogInUser(email, password);
     }
 }
