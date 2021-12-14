@@ -9,8 +9,6 @@ import androidx.lifecycle.LiveData;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.UserRepository;
 
-import java.util.List;
-
 public class LoginActivityViewModel extends AndroidViewModel {
 
     private UserRepository repository;

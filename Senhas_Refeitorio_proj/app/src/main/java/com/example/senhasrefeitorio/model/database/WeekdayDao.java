@@ -6,25 +6,25 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.senhasrefeitorio.model.Weekdays;
+import com.example.senhasrefeitorio.model.Weekday;
 
 import java.util.List;
 
 @Dao
 public interface WeekdayDao {
 
-    @Query("SELECT * FROM Weekdays")
-    List<Weekdays> getAll();
+    @Query("SELECT * FROM Weekday")
+    List<Weekday> getAll();
 
     @Insert
-    void add(Weekdays weekdays);
+    void add(Weekday weekday);
 
     @Insert
-    void add(List<Weekdays> weekdaysList);
+    void add(List<Weekday> weekdayList);
 
     @Delete
-    void delete(Weekdays weekdays);
+    void delete(Weekday weekdays);
 
     @Update
-    void update(Weekdays weekdays);
+    void update(Weekday weekdays);
 }

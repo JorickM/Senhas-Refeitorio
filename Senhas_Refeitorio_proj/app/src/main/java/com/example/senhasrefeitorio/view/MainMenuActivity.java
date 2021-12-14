@@ -2,6 +2,7 @@ package com.example.senhasrefeitorio.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +17,9 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private static final String KEY_ID = "id";
 
-    public static void startActivity(Context context, User user) {
+    public static void startActivity(Context context, Long userId) {
         Intent intent = new Intent(context, MainMenuActivity.class);
-        intent.putExtra(KEY_ID, id);
+        intent.putExtra(KEY_ID, userId);
         context.startActivity(intent);
     }
 
