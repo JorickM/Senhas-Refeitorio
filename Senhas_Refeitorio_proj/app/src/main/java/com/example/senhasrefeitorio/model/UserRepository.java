@@ -60,5 +60,4 @@ public class UserRepository {
     public void logout() {
         SessionManager.clearSession(this.context);
     }
-
 }

@@ -26,4 +26,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
         this.repository.tryToLoginUser(email, password);
     }
 
+    public void logOut(){
+        this.repository.logout();
+    }
 }
