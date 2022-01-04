@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                 } else {
-                    MainMenuActivity.startActivity(LoginActivity.this);
+                    MainMenuActivity.startActivity(LoginActivity.this, user);
                     finish();
                 }
             }
@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
 
         insertEmail = findViewById(R.id.editTextEmail);
         insertPassword = findViewById(R.id.editTextPassword);
-
 
         new  Thread(new Runnable() {
             @Override

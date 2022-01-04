@@ -21,8 +21,11 @@ import com.example.senhasrefeitorio.viewmodel.LoginActivityViewModel;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    public static void startActivity(Context context) {
+    private static User userFromLogin;
+
+    public static void startActivity(Context context, User user) {
         Intent intent = new Intent(context, MainMenuActivity.class);
+        userFromLogin = user;
         context.startActivity(intent);
     }
 
@@ -38,15 +41,12 @@ public class MainMenuActivity extends AppCompatActivity {
         ImageView imageView;
         imageView = findViewById(R.id.imgUser);
 
-        //User user = LoginActivity.getUser();
-        //Glide.with(this).load(user.getUrl()).into(imageView);
+        Glide.with(this).load(userFromLogin.getUrl()).into(imageView);
     }
 
     public void goToEmenta(View view) {
-        //Intent intent = new Intent(this, MealActivity.class);
-        //startActivity(intent);
-        WeekdayActivity.startActivity(this);
-
+        Intent intent = new Intent(this, WeekdayActivity.class);
+        startActivity(intent);
     }
 
     public void goToSenhas(View view) {
@@ -54,12 +54,7 @@ public class MainMenuActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -71,6 +66,17 @@ public class MainMenuActivity extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public void goToProfile(View view) {
+
     }
 
 }

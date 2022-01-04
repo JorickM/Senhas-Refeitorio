@@ -22,11 +22,6 @@ public class WeekdayActivity extends AppCompatActivity {
     private WeekdayAdapter adapter;
     private WeekdayActivityViewModel viewModel;
 
-    public static void startActivity(Context context) {
-        Intent intent = new Intent(context, WeekdayActivity.class);
-        context.startActivity(intent);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
