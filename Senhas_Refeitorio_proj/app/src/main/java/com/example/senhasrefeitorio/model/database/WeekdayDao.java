@@ -1,8 +1,10 @@
 package com.example.senhasrefeitorio.model.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -16,10 +18,10 @@ public interface WeekdayDao {
     @Query("SELECT * FROM Weekday")
     List<Weekday> getAll();
 
-    @Insert
-    void add(Weekday weekday);
+    @Query("SELECT * FROM Weekday")
+    LiveData<List<Weekday>> getAllWeekdays();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void add(List<Weekday> weekdayList);
 
     @Delete

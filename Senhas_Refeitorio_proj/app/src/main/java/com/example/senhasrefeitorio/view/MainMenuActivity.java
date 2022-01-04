@@ -45,6 +45,8 @@ public class MainMenuActivity extends AppCompatActivity {
     public void goToEmenta(View view) {
         //Intent intent = new Intent(this, MealActivity.class);
         //startActivity(intent);
+        WeekdayActivity.startActivity(this);
+
     }
 
     public void goToSenhas(View view) {

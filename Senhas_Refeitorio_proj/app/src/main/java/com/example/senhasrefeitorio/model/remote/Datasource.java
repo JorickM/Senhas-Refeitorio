@@ -16,4 +16,11 @@ public class Datasource {
     public static UserService getUserService() {
         return retrofit.create(UserService.class);
     }
+
+    public static WeekdayService getWeekdayService() {
+        return retrofit.create(WeekdayService.class);
+    }
+
+
+
 }
