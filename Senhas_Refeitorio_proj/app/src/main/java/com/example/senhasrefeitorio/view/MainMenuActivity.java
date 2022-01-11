@@ -54,7 +54,10 @@ public class MainMenuActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
-
+    public void goToProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -75,8 +78,6 @@ public class MainMenuActivity extends AppCompatActivity {
         return true;
     }
 
-    public void goToProfile(View view) {
 
-    }
 
 }
