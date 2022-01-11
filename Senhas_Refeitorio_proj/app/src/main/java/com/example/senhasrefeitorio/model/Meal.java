@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Meal {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long codMeal;
     private String mainDish;
     private String soup;

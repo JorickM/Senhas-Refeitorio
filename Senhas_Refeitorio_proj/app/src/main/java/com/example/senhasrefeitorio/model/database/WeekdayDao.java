@@ -14,10 +14,6 @@ import java.util.List;
 
 @Dao
 public interface WeekdayDao {
-
-    @Query("SELECT * FROM Weekday")
-    List<Weekday> getAll();
-
     @Query("SELECT * FROM Weekday")
     LiveData<List<Weekday>> getAllWeekdays();
 

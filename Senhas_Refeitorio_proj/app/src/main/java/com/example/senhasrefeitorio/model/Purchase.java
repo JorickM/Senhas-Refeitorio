@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Purchase {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long codPurchase;
     private long mealId;
     private long userId;

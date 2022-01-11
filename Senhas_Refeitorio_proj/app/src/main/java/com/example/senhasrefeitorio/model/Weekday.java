@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Weekday {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long codWeekday;
     private String name;
     private String date;

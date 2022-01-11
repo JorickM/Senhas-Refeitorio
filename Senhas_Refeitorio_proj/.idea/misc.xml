@@ -5,14 +5,10 @@
       <map>
         <entry key="..\:/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_login.xml" value="0.2078125" />
         <entry key="..\:/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_main.xml" value="0.259375" />
-        <entry key="..\:/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_main_menu.xml" value="0.259375" />
-        <entry key="..\:/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_profile.xml" value="0.259375" />
         <entry key="..\:/Users/joric/Documents/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/joric/Documents/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
-        <entry key="..\:/Users/joric/OneDrive/Documenten/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_login.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/joric/OneDrive/Documenten/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_main_menu.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/joric/OneDrive/Documenten/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_profile.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/joric/OneDrive/Documenten/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/joric/Documents/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/activity_weekday.xml" value="0.25" />
+        <entry key="..\:/Users/joric/Documents/GitHub/Senhas-Refeitorio/Senhas_Refeitorio_proj/app/src/main/res/layout/weekday_list_item.xml" value="0.25" />
       </map>
     </option>
   </component>
