@@ -34,7 +34,7 @@ public class WeekdayActivity extends AppCompatActivity {
 
         this.viewModel = new ViewModelProvider(this).get(WeekdayActivityViewModel.class);
 
-        this.viewModel.getWeekday().observe(this, new Observer<List<Weekday>>() {
+        this.viewModel.getAllWeekdays().observe(this, new Observer<List<Weekday>>() {
             @Override
             public void onChanged(List<Weekday> weekdays) {
                 WeekdayActivity.this.adapter.updateList(weekdays);

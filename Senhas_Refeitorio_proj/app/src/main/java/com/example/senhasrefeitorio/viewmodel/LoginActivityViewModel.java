@@ -7,15 +7,15 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.senhasrefeitorio.model.User;
-import com.example.senhasrefeitorio.model.UserRepository;
+import com.example.senhasrefeitorio.model.Repository;
 
 public class LoginActivityViewModel extends AndroidViewModel {
 
-    private UserRepository repository;
+    private Repository repository;
 
     public LoginActivityViewModel(@NonNull Application application) {
         super(application);
-        this.repository = new UserRepository(application);
+        this.repository = new Repository(application);
     }
 
     public LiveData<User> getUser() {
