@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class MealType {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long id;
     private String name;
 
