@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SenhasRefeitorio">
         <activity
-            android:name=".model.ProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.WeekdayActivity"
             android:exported="false" />
         <activity
