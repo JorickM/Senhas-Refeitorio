@@ -6,20 +6,20 @@ import androidx.room.PrimaryKey;
 @Entity
 public class MealType {
     @PrimaryKey
-    private long id;
+    private long codMealType;
     private String name;
 
-    public MealType(long id, String name) {
-        this.id = id;
+    public MealType(long codMealType, String name) {
+        this.codMealType = codMealType;
         this.name = name;
     }
 
-    public long getId() {
-        return id;
+    public long getCodMealType() {
+        return codMealType;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCodMealType(long codMealType) {
+        this.codMealType = codMealType;
     }
 
     public String getName() {

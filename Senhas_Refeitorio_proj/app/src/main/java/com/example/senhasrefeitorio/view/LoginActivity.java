@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+     /*   this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
@@ -54,8 +54,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+*/
 
+
+    }
+/*
     public void login(View view) {
         EditText insertEmail, insertPassword;
         String email, password;
@@ -91,5 +94,5 @@ public class LoginActivity extends AppCompatActivity {
 
         tryingToLogIn = true;
         this.viewModel.tryToLogInUser(email, password);
-    }
+    }*/
 }
