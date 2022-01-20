@@ -55,7 +55,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void goToProfile(View view) {
-        ProfileActivity.startActivity(MainMenuActivity.this,userFromLogin);
+        ProfileActivity.startActivity(MainMenuActivity.this, userFromLogin);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.senhasrefeitorio.model;
+package com.example.senhasrefeitorio.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.senhasrefeitorio.R;
+import com.example.senhasrefeitorio.model.Weekday;
 
 import java.util.ArrayList;
 import java.util.List;

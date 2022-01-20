@@ -39,7 +39,6 @@ public class ProfileActivity extends AppCompatActivity {
         Glide.with(this).load(userFromLogin.getUrl()).into(imageView);
     }
 
-
     public void logOut(View view) {
         viewModel.logOut();
         LoginActivity.startActivity(this);

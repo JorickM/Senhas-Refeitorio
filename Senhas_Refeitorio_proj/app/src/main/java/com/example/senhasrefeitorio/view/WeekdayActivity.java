@@ -6,13 +6,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Weekday;
-import com.example.senhasrefeitorio.model.WeekdayAdapter;
 import com.example.senhasrefeitorio.viewmodel.WeekdayActivityViewModel;
 
 import java.util.List;
