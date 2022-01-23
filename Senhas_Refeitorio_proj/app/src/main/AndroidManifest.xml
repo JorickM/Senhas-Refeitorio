@@ -15,12 +15,6 @@
             android:name=".view.WeekdayActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.MainMenuActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.LoginActivity"
             android:exported="true">
             <intent-filter>

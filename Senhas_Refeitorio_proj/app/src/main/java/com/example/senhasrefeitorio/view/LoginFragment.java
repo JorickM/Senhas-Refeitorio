@@ -69,7 +69,7 @@ public class LoginFragment extends Fragment {
                     }
                 } else {
                     NavController navController = NavHostFragment.findNavController(LoginFragment.this);
-                    navController.navigate(R.id.action_loginFragment_to_mainMenuActivity);
+                    navController.navigate(R.id.action_loginFragment_to_mainMenuFragment);
 
                 }
             }

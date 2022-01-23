@@ -10,12 +10,28 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_mainMenuActivity"
-            app:destination="@id/mainMenuActivity" />
+            android:id="@+id/action_loginFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
     </fragment>
-    <activity
-        android:id="@+id/mainMenuActivity"
-        android:name="com.example.senhasrefeitorio.view.MainMenuActivity"
-        android:label="activity_main_menu"
-        tools:layout="@layout/activity_main_menu" />
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.senhasrefeitorio.view.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.senhasrefeitorio.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
