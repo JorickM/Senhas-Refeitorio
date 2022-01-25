@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -46,10 +47,10 @@ public class MainMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
+        mLoginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+
 
         userFromLogin = SessionManager.getActiveSession(getActivity());
-
-        mLoginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
         ImageView imageView;
         imageView = view.findViewById(R.id.imgUser);
