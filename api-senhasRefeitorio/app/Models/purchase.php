@@ -9,5 +9,5 @@ class purchase extends Model
 {
     use HasFactory;
     protected $table = 'purchases';
-    protected $fillable = ['codPurchase', 'codMeal', 'codUser'];
+    protected $fillable = ['codMeal', 'codUser'];
 }

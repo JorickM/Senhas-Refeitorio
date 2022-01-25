@@ -9,5 +9,5 @@ class meal extends Model
 {
     use HasFactory;
     protected $table = 'meals';
-    protected $fillable = ['codMeal', 'codWeekday', 'codMealType', 'mainDish', 'userLimit', 'soup', 'desert'];
+    protected $fillable = ['codWeekday', 'codMealType', 'mainDish', 'soup', 'desert'];
 }

@@ -9,5 +9,5 @@ class mealtype extends Model
 {
     use HasFactory;
     protected $table = 'mealtypes';
-    protected $fillable = ['codMealType', 'name'];
+    protected $fillable = ['name'];
 }

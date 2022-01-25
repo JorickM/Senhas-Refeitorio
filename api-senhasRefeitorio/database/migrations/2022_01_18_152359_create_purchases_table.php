@@ -14,7 +14,7 @@ class CreatePurchasesTable extends Migration
     public function up()
     {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->integer('codPurchase');
+            $table->integer('codPurchase')->autoIncrement()->primary();
             $table->integer('codMeal');
             $table->integer('codUser');
             $table->timestamps();

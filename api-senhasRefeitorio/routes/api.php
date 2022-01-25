@@ -3,6 +3,8 @@
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\MealTypeController;
 use App\Http\Controllers\WeekDayController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
