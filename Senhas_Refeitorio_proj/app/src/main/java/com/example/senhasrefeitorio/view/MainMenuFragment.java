@@ -33,7 +33,6 @@ public class MainMenuFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        userFromLogin = SessionManager.getActiveSession(getActivity());
     }
 
     @Override
@@ -47,6 +46,8 @@ public class MainMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
+
+        userFromLogin = SessionManager.getActiveSession(getActivity());
 
         mLoginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 

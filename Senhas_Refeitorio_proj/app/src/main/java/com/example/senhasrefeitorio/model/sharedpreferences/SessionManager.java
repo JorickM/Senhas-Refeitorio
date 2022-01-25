@@ -11,7 +11,7 @@ public class SessionManager {
     private static SharedPreferences sharedPreferences;
     private static final String FILENAME = "sessionSharedPrefs";
     private static final String KEY_USER_CODE = "userID";
-    private static final String KEY_USER_EMAIL = "userEmail";
+    private static final String KEY_USER_EMAIL = "email";
 
 
     private static SharedPreferences getSharedPreferences(Context context) {
