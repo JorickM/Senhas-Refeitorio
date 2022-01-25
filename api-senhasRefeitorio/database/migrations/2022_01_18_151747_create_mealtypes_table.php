@@ -14,7 +14,7 @@ class CreateMealtypesTable extends Migration
     public function up()
     {
         Schema::create('mealtypes', function (Blueprint $table) {
-            $table->integer('codMealType');
+            $table->integer('codMealType')->autoIncrement()->primary();
             $table->string('name');
             $table->timestamps();
         });

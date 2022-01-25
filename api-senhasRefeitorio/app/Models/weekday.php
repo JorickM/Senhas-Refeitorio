@@ -9,5 +9,5 @@ class weekday extends Model
 {
     use HasFactory;
     protected $table = 'weekdays';
-    protected $fillable = ['codWeekday', 'name', 'date', 'userLimit'];
+    protected $fillable = ['name', 'date'];
 }
