@@ -21,6 +21,7 @@ public class Datasource {
         return retrofit.create(WeekdayService.class);
     }
 
-
-
+    public static MealService getMealService(){
+        return retrofit.create(MealService.class);
+    }
 }

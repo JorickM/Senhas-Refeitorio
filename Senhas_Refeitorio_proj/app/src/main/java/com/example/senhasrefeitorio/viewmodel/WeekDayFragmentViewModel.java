@@ -8,22 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import com.example.senhasrefeitorio.model.Repository;
 import com.example.senhasrefeitorio.model.Weekday;
-import com.example.senhasrefeitorio.model.database.AppDatabase;
-import com.example.senhasrefeitorio.model.database.WeekdayDao;
-import com.example.senhasrefeitorio.model.remote.Datasource;
-import com.example.senhasrefeitorio.model.remote.WeekdayService;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class WeekdayActivityViewModel extends AndroidViewModel {
-
+public class WeekDayFragmentViewModel extends AndroidViewModel {
     private Repository repository;
 
-    public WeekdayActivityViewModel(@NonNull Application application) {
+    public WeekDayFragmentViewModel(@NonNull Application application) {
         super(application);
         this.repository = new Repository(application);
     }
@@ -36,18 +27,4 @@ public class WeekdayActivityViewModel extends AndroidViewModel {
     public void updateList() {
         this.repository.updateList();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

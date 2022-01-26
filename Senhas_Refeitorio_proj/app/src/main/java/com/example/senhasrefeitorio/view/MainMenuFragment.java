@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,23 +22,13 @@ import com.bumptech.glide.Glide;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
-import com.example.senhasrefeitorio.viewmodel.LoginActivityViewModel;
+import com.example.senhasrefeitorio.viewmodel.LoginFragmentViewModel;
 
 public class MainMenuFragment extends Fragment {
-
-    private static User userFromLogin;
-    private LoginActivityViewModel mLoginViewModel;
+    private LoginFragmentViewModel mLoginViewModel;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main_menu, container, false);
     }
 
@@ -47,17 +36,14 @@ public class MainMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
-        mLoginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+        mLoginViewModel = new ViewModelProvider(this).get(LoginFragmentViewModel.class);
 
-
-        userFromLogin = SessionManager.getActiveSession(getActivity());
+        User userFromLogin = SessionManager.getActiveSession(getActivity());
 
         ImageView imageView;
         imageView = view.findViewById(R.id.imgUser);
 
         Glide.with(this).load(userFromLogin.getUrl()).into(imageView);
-
-
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,21 +53,24 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-    }
+        Button btnGoToWeekDays = view.findViewById(R.id.btnEmenta);
+        Button btnGoToSenhas = view.findViewById(R.id.btnSenha);
 
+        btnGoToWeekDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = NavHostFragment.findNavController(MainMenuFragment.this);
+                navController.navigate(R.id.action_mainMenuFragment_to_weekDay );
+            }
+        });
 
-
-    public void goToEmenta(View view) {
-
-    }
-
-    public void goToSenhas(View view) {
-        //Intent intent = new Intent(this, SenhaActivity.class);
-        //startActivity(intent);
-    }
-
-    public void goToProfile(View view) {
-        //ProfileActivity.startActivity(MainMenuActivity.this, userFromLogin);
+        btnGoToSenhas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                NavController navController = NavHostFragment.findNavController(MainMenuFragment.this);
+//                navController.navigate(R.id.action_mainMenuFragment_to_weekDay );
+            }
+        });
     }
 
     @Override
@@ -101,10 +90,5 @@ public class MainMenuFragment extends Fragment {
         }
         return false;
     }
-
-
-
-
-
 
 }

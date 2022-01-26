@@ -6,8 +6,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.senhasrefeitorio.model.database.AppDatabase;
+import com.example.senhasrefeitorio.model.database.MealDao;
+import com.example.senhasrefeitorio.model.database.UserDao;
 import com.example.senhasrefeitorio.model.database.WeekdayDao;
 import com.example.senhasrefeitorio.model.remote.Datasource;
+import com.example.senhasrefeitorio.model.remote.MealService;
 import com.example.senhasrefeitorio.model.remote.WeekdayService;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
 
@@ -22,6 +25,7 @@ public class Repository {
     private Context context;
     private MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
     private WeekdayDao weekdayDao;
+    private MealDao mealDao;
 
     public Repository(Context context) {
         this.context = context;
@@ -98,6 +102,37 @@ public class Repository {
 
             @Override
             public void onFailure(Call<List<Weekday>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public LiveData<List<Meal>> getAllMeals(long codWeekday) {
+        return this.mealDao.getAllById(codWeekday);
+    }
+
+    public void updateMealList() {
+        MealService service = Datasource.getMealService();
+
+        service.getMealsByCodWeekday().enqueue(new Callback<List<Meal>>() {
+            @Override
+            public void onResponse(Call<List<Meal>> call, Response<List<Meal>> response) {
+                if (response.isSuccessful()) {
+                    List<Meal> meals = response.body();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (Meal meal : meals) {
+                                mealDao.add(meals);
+                            }
+                        }
+                    }).start();
+                } else {
+                    // Log error to logcat
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Meal>> call, Throwable t) {
                 t.printStackTrace();
             }
         });

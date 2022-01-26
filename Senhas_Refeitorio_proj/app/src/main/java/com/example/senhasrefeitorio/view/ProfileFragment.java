@@ -19,32 +19,15 @@ import com.bumptech.glide.Glide;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
-import com.example.senhasrefeitorio.viewmodel.LoginActivityViewModel;
-import com.example.senhasrefeitorio.viewmodel.ProfileActivityViewModel;
+import com.example.senhasrefeitorio.viewmodel.LoginFragmentViewModel;
+import com.example.senhasrefeitorio.viewmodel.ProfileFragmentViewModel;
 
 public class ProfileFragment extends Fragment {
-
-    private static User userFromLogin;
-    private ProfileActivityViewModel viewModel;
-    private LoginActivityViewModel mLoginViewModel;
-
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-
+    private ProfileFragmentViewModel viewModel;
+    private LoginFragmentViewModel mLoginViewModel;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        userFromLogin = SessionManager.getActiveSession(getActivity());
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -52,11 +35,13 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.viewModel = new ViewModelProvider(this).get(ProfileActivityViewModel.class);
-        this.mLoginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+        this.viewModel = new ViewModelProvider(this).get(ProfileFragmentViewModel.class);
+        this.mLoginViewModel = new ViewModelProvider(this).get(LoginFragmentViewModel.class);
 
         ImageView imageView;
         imageView = view.findViewById(R.id.imgUserProfile);
+
+        User userFromLogin = SessionManager.getActiveSession(getActivity());
 
         Glide.with(this).load(userFromLogin.getUrl()).into(imageView);
 
@@ -69,8 +54,5 @@ public class ProfileFragment extends Fragment {
                 navController.navigate(R.id.action_profileFragment_to_loginFragment);
             }
         });
-
-
-
     }
 }

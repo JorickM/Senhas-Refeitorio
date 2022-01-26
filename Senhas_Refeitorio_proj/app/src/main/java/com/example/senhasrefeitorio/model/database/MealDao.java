@@ -1,8 +1,10 @@
 package com.example.senhasrefeitorio.model.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -14,9 +16,9 @@ import java.util.List;
 public interface MealDao {
 
     @Query("SELECT * FROM Meal")
-    List<Meal> getAll();
+    LiveData<List<Meal>> getAll();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void add(Meal meal);
 
     @Insert
@@ -27,4 +29,7 @@ public interface MealDao {
 
     @Update
     void update(Meal meal);
+
+    @Query("SELECT * FROM Meal WHERE codWeekday = :codWeekday")
+    LiveData<List<Meal>> getAllById(long codWeekday);
 }

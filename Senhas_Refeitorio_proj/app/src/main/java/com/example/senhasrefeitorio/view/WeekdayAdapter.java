@@ -19,6 +19,7 @@ public class WeekdayAdapter extends RecyclerView.Adapter<WeekdayAdapter.ViewHold
 
     private final Context context;
     private List<Weekday> weekdayList = new ArrayList<>();
+    private WeekDayNavigator navigator;
 
     public WeekdayAdapter(Context context) {
         this.context = context;
@@ -39,7 +40,7 @@ public class WeekdayAdapter extends RecyclerView.Adapter<WeekdayAdapter.ViewHold
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  MealListActivity.startActivity(context, Meals.getId());
+              navigator.goToMeals(weekday.getCodWeekday());
             }
         });
     }
@@ -67,12 +68,7 @@ public class WeekdayAdapter extends RecyclerView.Adapter<WeekdayAdapter.ViewHold
         }
     }
 
-
-
-
-
-
-
-
-
+    public interface WeekDayNavigator{
+        void goToMeals(long codWeekday);
+    }
 }

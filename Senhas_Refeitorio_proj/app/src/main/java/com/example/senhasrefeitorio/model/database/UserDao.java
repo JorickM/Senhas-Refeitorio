@@ -24,5 +24,5 @@ public interface UserDao {
     void update(User user);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void add(List<User> userList);
+    void add(User user);
 }

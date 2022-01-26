@@ -11,16 +11,13 @@ public class Meal {
     private String soup;
     private String dessert;
     private long codWeekday;
-    private long codMealType;
 
-
-    public Meal(long codMeal, String mainDish, String soup, String dessert, long codWeekday, long codMealType) {
+    public Meal(long codMeal, String mainDish, String soup, String dessert, long codWeekday) {
         this.codMeal = codMeal;
         this.mainDish = mainDish;
         this.soup = soup;
         this.dessert = dessert;
         this.codWeekday = codWeekday;
-        this.codMealType = codMealType;
     }
 
     public long getCodMeal() {
@@ -61,13 +58,5 @@ public class Meal {
 
     public void setCodWeekday(long codWeekday) {
         this.codWeekday = codWeekday;
-    }
-
-    public long getCodMealType() {
-        return codMealType;
-    }
-
-    public void setCodMealType(int typeMeal) {
-        this.codMealType = codMealType;
     }
 }

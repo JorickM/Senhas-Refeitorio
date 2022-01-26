@@ -9,11 +9,11 @@ import androidx.lifecycle.LiveData;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.Repository;
 
-public class LoginActivityViewModel extends AndroidViewModel {
+public class LoginFragmentViewModel extends AndroidViewModel {
 
     private Repository repository;
 
-    public LoginActivityViewModel(@NonNull Application application) {
+    public LoginFragmentViewModel(@NonNull Application application) {
         super(application);
         this.repository = new Repository(application);
     }

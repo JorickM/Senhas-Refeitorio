@@ -7,10 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.senhasrefeitorio.model.Repository;
 
-public class ProfileActivityViewModel extends AndroidViewModel {
+public class ProfileFragmentViewModel extends AndroidViewModel {
     private Repository repository;
 
-    public ProfileActivityViewModel(@NonNull Application application) {
+    public ProfileFragmentViewModel(@NonNull Application application) {
         super(application);
         this.repository = new Repository(application);
     }

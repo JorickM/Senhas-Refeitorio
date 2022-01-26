@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_weekDay"
+            app:destination="@id/weekDay" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -33,5 +36,23 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weekDay"
+        android:name="com.example.senhasrefeitorio.view.WeekDayFragment"
+        android:label="week_day_fragment"
+        tools:layout="@layout/week_day_fragment" >
+        <action
+            android:id="@+id/actionweekDaytomealFragment"
+            app:destination="@id/mealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealFragment"
+        android:name="com.example.senhasrefeitorio.view.MealFragment"
+        android:label="meal_fragment"
+        tools:layout="@layout/meal_fragment" >
+        <argument
+            android:name="codWeekDay"
+            app:argType="long" />
     </fragment>
 </navigation>

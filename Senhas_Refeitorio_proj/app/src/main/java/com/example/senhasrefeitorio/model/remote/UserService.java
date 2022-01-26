@@ -12,6 +12,4 @@ import retrofit2.http.Query;
 public interface UserService {
     @GET("users/")
     Call<List<User>> getUser(@Query("email") String email, @Query("password") String password);
-
-
 }
