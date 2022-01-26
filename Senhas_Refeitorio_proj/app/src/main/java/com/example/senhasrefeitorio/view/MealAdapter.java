@@ -18,7 +18,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
 
     private final Context context;
     private List<Meal> mealList = new ArrayList<>();
-    private WeekdayAdapter.WeekDayNavigator navigator;
 
     public MealAdapter(Context context) {
         this.context = context;

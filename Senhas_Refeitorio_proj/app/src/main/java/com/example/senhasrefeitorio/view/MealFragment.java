@@ -45,7 +45,7 @@ public class MealFragment extends Fragment {
         MealFragmentArgs args = MealFragmentArgs.fromBundle(getArguments());
         this.codWeekDay = args.getCodWeekDay();
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView2);
         this.adapter = new MealAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(this.adapter);

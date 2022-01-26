@@ -30,6 +30,7 @@ public class Repository {
     public Repository(Context context) {
         this.context = context;
         this.weekdayDao = AppDatabase.getInstance(context).getWeekDaysDao();
+        this.mealDao = AppDatabase.getInstance(context).getMealsDao();
     }
 
     public void tryToLoginUser(String email, String password) {
