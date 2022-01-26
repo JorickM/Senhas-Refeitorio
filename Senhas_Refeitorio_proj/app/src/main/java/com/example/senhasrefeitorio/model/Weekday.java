@@ -9,13 +9,11 @@ public class Weekday {
     private long codWeekday;
     private String name;
     private String date;
-    private int userlimit;
 
-    public Weekday(long codWeekday, String name, String date, int userlimit) {
+    public Weekday(long codWeekday, String name, String date) {
         this.codWeekday = codWeekday;
         this.name = name;
         this.date = date;
-        this.userlimit = userlimit;
     }
 
     public long getCodWeekday() {
@@ -40,13 +38,5 @@ public class Weekday {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public int getUserlimit() {
-        return userlimit;
-    }
-
-    public void setUserlimit(int userlimit) {
-        this.userlimit = userlimit;
     }
 }
