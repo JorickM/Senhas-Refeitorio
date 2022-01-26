@@ -9,14 +9,14 @@ public class Meal {
     private long codMeal;
     private String mainDish;
     private String soup;
-    private String dessert;
+    private String desert;
     private long codWeekday;
 
-    public Meal(long codMeal, String mainDish, String soup, String dessert, long codWeekday) {
+    public Meal(long codMeal, String mainDish, String soup, String desert, long codWeekday) {
         this.codMeal = codMeal;
         this.mainDish = mainDish;
         this.soup = soup;
-        this.dessert = dessert;
+        this.desert = desert;
         this.codWeekday = codWeekday;
     }
 
@@ -44,12 +44,12 @@ public class Meal {
         this.soup = soup;
     }
 
-    public String getDessert() {
-        return dessert;
+    public String getDesert() {
+        return desert;
     }
 
-    public void setDessert(String dessert) {
-        this.dessert = dessert;
+    public void setDesert(String desert) {
+        this.desert = desert;
     }
 
     public long getCodWeekday() {

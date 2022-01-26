@@ -35,7 +35,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
         Meal meal = this.mealList.get(position);
         holder.textViewMeal.setText(meal.getMainDish());
         holder.textViewSoup.setText(meal.getSoup());
-        holder.textViewDesert.setText(meal.getDessert());
+        holder.textViewDesert.setText(meal.getDesert());
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
