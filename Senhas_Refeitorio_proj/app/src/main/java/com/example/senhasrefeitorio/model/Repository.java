@@ -123,7 +123,7 @@ public class Repository {
                         @Override
                         public void run() {
                             for (Meal meal : meals) {
-                                mealDao.add(meals);
+                                mealDao.add(meal);
                             }
                         }
                     }).start();

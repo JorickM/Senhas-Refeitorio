@@ -21,8 +21,9 @@ public class WeekdayAdapter extends RecyclerView.Adapter<WeekdayAdapter.ViewHold
     private List<Weekday> weekdayList = new ArrayList<>();
     private WeekDayNavigator navigator;
 
-    public WeekdayAdapter(Context context) {
+    public WeekdayAdapter(Context context, WeekDayNavigator navigator) {
         this.context = context;
+        this.navigator = navigator;
     }
 
     @NonNull

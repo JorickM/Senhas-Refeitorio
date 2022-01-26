@@ -43,7 +43,7 @@ public class WeekDayFragment extends Fragment implements WeekdayAdapter.WeekDayN
         mViewModel = new ViewModelProvider(this).get(WeekDayFragmentViewModel.class);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
-        this.adapter = new WeekdayAdapter(getActivity());
+        this.adapter = new WeekdayAdapter(getActivity(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(this.adapter);
 
