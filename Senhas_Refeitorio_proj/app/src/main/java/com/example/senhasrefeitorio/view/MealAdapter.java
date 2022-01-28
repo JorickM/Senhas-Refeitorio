@@ -1,6 +1,8 @@
 package com.example.senhasrefeitorio.view;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Meal;
+import com.example.senhasrefeitorio.model.Purchase;
+import com.example.senhasrefeitorio.model.User;
+import com.example.senhasrefeitorio.model.database.AppDatabase;
+import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +38,10 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MealAdapter.ViewHolder holder, int position) {
+
+        User userFromLogin = SessionManager.getActiveSession(MealAdapter.this.context);
+
+
         Meal meal = this.mealList.get(position);
         holder.textViewMeal.setText(meal.getMainDish());
         holder.textViewSoup.setText(meal.getSoup());
@@ -39,6 +49,36 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MealAdapter.this.context);
+                builder.setTitle("Comprar Senha");
+                builder.setMessage("Tem a certeza que pretende comprar a senha para " + meal.getMainDish() + "?");
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Purchase purchase = new Purchase(0,meal.getCodMeal(),userFromLogin.getCodUser());
+
+                        // chatList.remove(chat);
+                       // notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+
+
+
+
 
             }
         });

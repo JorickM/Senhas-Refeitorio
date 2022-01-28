@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="260dp"
             android:text="Histórico"
+            android:textColor="#000000"
+            app:backgroundTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,11 +40,13 @@
             android:layout_height="wrap_content"
             android:onClick="logOut"
             android:text="Logout"
+            android:textColor="#000000"
+            app:backgroundTint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2"
-            app:layout_constraintVertical_bias="0.13" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.746" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
