@@ -14,7 +14,9 @@ class CreateWeekdaysTable extends Migration
     public function up()
     {
         Schema::create('weekdays', function (Blueprint $table) {
-            $table->id();
+            $table->integer('codWeekday')->autoIncrement()->primary();
+            $table->string('name');
+            $table->date('date');
             $table->timestamps();
         });
     }

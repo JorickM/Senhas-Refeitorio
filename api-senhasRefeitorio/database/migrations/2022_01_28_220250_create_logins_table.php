@@ -14,7 +14,13 @@ class CreateLoginsTable extends Migration
     public function up()
     {
         Schema::create('logins', function (Blueprint $table) {
-            $table->id();
+            $table->integer('codUser')->autoIncrement()->primary();
+            $table->string('name');
+            $table->string('lastName');
+            $table->string('email');
+            $table->string('password');
+            $table->string('url');
+            $table->integer('type');
             $table->timestamps();
         });
     }

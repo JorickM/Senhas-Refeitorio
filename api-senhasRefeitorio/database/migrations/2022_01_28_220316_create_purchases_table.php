@@ -14,8 +14,13 @@ class CreatePurchasesTable extends Migration
     public function up()
     {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->id();
+            $table->integer('codPurchase')->autoIncrement()->primary();
+            $table->integer('codMeal')->unsigned();
+            $table->integer('codUser')->unsigned();
             $table->timestamps();
+
+            $table->foreign('codMeal')->references('codMeal')->on('meals');
+            $table->foreign('codUser')->references('codUser')->on('logins');
         });
     }
 

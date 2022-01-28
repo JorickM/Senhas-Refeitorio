@@ -14,7 +14,12 @@ class CreateMealsTable extends Migration
     public function up()
     {
         Schema::create('meals', function (Blueprint $table) {
-            $table->id();
+            $table->integer('codMeal')->autoIncrement()->primary();
+            $table->integer('codWeekday')->unsigned();
+            $table->string('mainDish');
+            $table->string('soup');
+            $table->string('desert');
+            $table->foreign('codWeekday')->references('codWeekday')->on('weekdays');
             $table->timestamps();
         });
     }
