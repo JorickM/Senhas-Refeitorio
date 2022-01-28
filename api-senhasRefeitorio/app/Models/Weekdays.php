@@ -11,9 +11,9 @@ class Weekdays extends Model
     protected $table = 'weekdays';
     protected $fillable = ['name', 'date'];
 
-    public function meal(){
-    return $this->belongsTo(Meal::class);
-    }
+    //public function meal(){
+    //return $this->belongsTo(Meal::class);
+    //}
 }
 
 

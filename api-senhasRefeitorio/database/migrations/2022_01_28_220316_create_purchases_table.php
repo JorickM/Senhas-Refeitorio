@@ -19,8 +19,8 @@ class CreatePurchasesTable extends Migration
             $table->integer('codUser')->unsigned();
             $table->timestamps();
 
-            $table->foreign('codMeal')->references('codMeal')->on('meals');
-            $table->foreign('codUser')->references('codUser')->on('logins');
+            //$table->foreign('codMeal')->references('codMeal')->on('meals');
+            //$table->foreign('codUser')->references('codUser')->on('logins');
         });
     }
 

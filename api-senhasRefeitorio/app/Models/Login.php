@@ -11,8 +11,8 @@ class Login extends Model
     protected $table = 'logins';
     protected $fillable = ['name', 'lastName', 'email', 'password', 'url', 'type'];
 
-    public function purchases()
-    {
-        return $this->belongsToMany(Purchase::class);
-    }
+    //public function purchases()
+    //{
+    //    return $this->belongsToMany(Purchase::class);
+    //}
 }

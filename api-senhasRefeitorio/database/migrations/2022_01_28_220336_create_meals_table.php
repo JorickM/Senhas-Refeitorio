@@ -19,7 +19,7 @@ class CreateMealsTable extends Migration
             $table->string('mainDish');
             $table->string('soup');
             $table->string('desert');
-            $table->foreign('codWeekday')->references('codWeekday')->on('weekdays');
+            //$table->foreign('codWeekday')->references('codWeekday')->on('weekdays');
             $table->timestamps();
         });
     }

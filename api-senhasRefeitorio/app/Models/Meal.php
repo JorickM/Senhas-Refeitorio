@@ -15,8 +15,8 @@ class Meal extends Model
         return $this->belongsTo(Weekdays::class);
     }
 
-    public function purchases()
-    {
-        return $this->belongsToMany(Purchase::class);
-    }
+    //public function purchases()
+    //{
+    //    return $this->belongsToMany(Purchase::class);
+    //}
 }
