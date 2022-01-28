@@ -7,10 +7,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.senhasrefeitorio.model.database.AppDatabase;
 import com.example.senhasrefeitorio.model.database.MealDao;
+import com.example.senhasrefeitorio.model.database.PurchaseDao;
 import com.example.senhasrefeitorio.model.database.UserDao;
 import com.example.senhasrefeitorio.model.database.WeekdayDao;
 import com.example.senhasrefeitorio.model.remote.Datasource;
 import com.example.senhasrefeitorio.model.remote.MealService;
+import com.example.senhasrefeitorio.model.remote.PurchaseService;
 import com.example.senhasrefeitorio.model.remote.WeekdayService;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
 
@@ -26,6 +28,7 @@ public class Repository {
     private MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
     private WeekdayDao weekdayDao;
     private MealDao mealDao;
+    private PurchaseDao purchaseDao;
 
     public Repository(Context context) {
         this.context = context;
@@ -138,4 +141,62 @@ public class Repository {
             }
         });
     }
+
+
+    public void updatePurchaseList() {
+        PurchaseService service = Datasource.getPurchaseService();
+
+        service.getPurchasesByCodUser().enqueue(new Callback<List<Purchase>>() {
+            @Override
+            public void onResponse(Call<List<Purchase>> call, Response<List<Purchase>> response) {
+                if (response.isSuccessful()) {
+                    List<Purchase> purchases = response.body();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (Purchase purchase : purchases) {
+                                purchaseDao.add(purchase);
+                            }
+                        }
+                    }).start();
+                } else {
+                    // Log error to logcat
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Purchase>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+
+
+
+
+    public void addPurchase(Purchase purchase){
+        PurchaseService service = Datasource.getPurchaseService();
+
+        service.setPurchase(purchase).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+
+                if (response.isSuccessful()) {
+                    Boolean result = response.body();
+                } else {
+                    // Resposta mal sucedida
+                    // Snakbar
+                }
+            }
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+
+
+
+
 }

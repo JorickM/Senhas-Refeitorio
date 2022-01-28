@@ -2,6 +2,8 @@ package com.example.senhasrefeitorio.model.remote;
 
 
 
+import com.example.senhasrefeitorio.model.Purchase;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -24,4 +26,9 @@ public class Datasource {
     public static MealService getMealService(){
         return retrofit.create(MealService.class);
     }
+
+    public static PurchaseService getPurchaseService(){
+        return retrofit.create(PurchaseService.class);
+    }
+
 }
