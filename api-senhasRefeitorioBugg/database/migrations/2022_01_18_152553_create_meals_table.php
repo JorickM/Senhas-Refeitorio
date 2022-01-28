@@ -16,7 +16,7 @@ class CreateMealsTable extends Migration
         Schema::create('meals', function (Blueprint $table) {
             $table->integer('codMeal')->autoIncrement()->primary();
             $table->integer('codWeekday');
-            $table->integer('codMealType');
+            $table->integer('codMealType')->;
             $table->string('mainDish');
             $table->integer('userLimit');
             $table->string('soup');

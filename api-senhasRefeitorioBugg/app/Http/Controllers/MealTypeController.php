@@ -46,6 +46,8 @@ class MealTypeController extends Controller
     public function store(Request $request)
     {
         //
+        este é com as blades
+        depois as routes da web é que invoca
     }
 
     /**
@@ -76,7 +78,8 @@ class MealTypeController extends Controller
     public function edit(mealtype $mealtype)
     {
         //
-        
+        este é com as blades
+        depois as routes da web é que invoca
     }
 
     /**
