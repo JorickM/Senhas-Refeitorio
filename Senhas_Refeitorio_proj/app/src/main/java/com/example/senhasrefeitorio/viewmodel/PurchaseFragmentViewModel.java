@@ -11,12 +11,11 @@ import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.Repository;
 
 public class PurchaseFragmentViewModel  extends AndroidViewModel {
-
-
     private Repository repository;
 
     public PurchaseFragmentViewModel(@NonNull Application application) {
         super(application);
+        this.repository = new Repository(application);
     }
 
     public void addPurchase(Purchase purchase) {

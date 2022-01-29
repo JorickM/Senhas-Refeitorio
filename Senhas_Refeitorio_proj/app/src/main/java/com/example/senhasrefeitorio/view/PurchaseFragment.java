@@ -46,10 +46,15 @@ public class PurchaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView txtMainDish, txtSoup, txtDesert;
+
+
         mViewModel = new ViewModelProvider(this).get(PurchaseFragmentViewModel.class);
 
         PurchaseFragmentArgs args = PurchaseFragmentArgs.fromBundle(getArguments());
         this.codMeal = args.getCodMeal();
+
+
 
         this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
             @Override
@@ -58,14 +63,13 @@ public class PurchaseFragment extends Fragment {
             }
         });
 
-        TextView txtMainDish, txtSoup, txtDesert;
         txtMainDish = view.findViewById(R.id.txtMainDishPurchase);
         txtSoup = view.findViewById(R.id.txtSoupPurchase);
         txtDesert = view.findViewById(R.id.txtDesertPurchase);
 
         txtMainDish.setText(mealSelected.getMainDish());
-        txtSoup.setText(mealSelected.getSoup());
-        txtDesert.setText(mealSelected.getDesert());
+//        txtSoup.setText(mealSelected.getSoup());
+//        txtDesert.setText(mealSelected.getDesert());
 
         ImageView imgFood = view.findViewById(R.id.imgFood);
 
@@ -110,6 +114,7 @@ public class PurchaseFragment extends Fragment {
                 dialog.show();
             }
         });
+
 
 
 

@@ -11,7 +11,7 @@ import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.Weekday;
 
-@Database(entities = {User.class, Purchase.class, Meal.class, Weekday.class}, version = 1)
+@Database(entities = {User.class, Purchase.class, Meal.class, Weekday.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract MealDao getMealsDao();
