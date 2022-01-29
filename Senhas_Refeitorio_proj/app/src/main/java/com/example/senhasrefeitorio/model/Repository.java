@@ -176,11 +176,9 @@ public class Repository {
 
     public void addPurchase(Purchase purchase){
         PurchaseService service = Datasource.getPurchaseService();
-
         service.setPurchase(purchase).enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-
                 if (response.isSuccessful()) {
                     Boolean result = response.body();
                 } else {
@@ -194,5 +192,4 @@ public class Repository {
             }
         });
     }
-
 }

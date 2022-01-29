@@ -22,20 +22,18 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Meal;
-import com.example.senhasrefeitorio.viewmodel.MealFragmentViewModel;
+import com.example.senhasrefeitorio.model.Purchase;
+import com.example.senhasrefeitorio.model.User;
+import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
 import com.example.senhasrefeitorio.viewmodel.PurchaseFragmentViewModel;
 
-import java.util.List;
-
-
 public class PurchaseFragment extends Fragment {
-
     private PurchaseFragmentViewModel mViewModel;
     private long codMeal;
-    private Meal mealSelected;
 
-    public PurchaseFragment() {
-    }
+    TextView txtMainDish, txtSoup, txtDesert;
+
+    String mealName, mealUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,43 +44,40 @@ public class PurchaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView txtMainDish, txtSoup, txtDesert;
-
-
         mViewModel = new ViewModelProvider(this).get(PurchaseFragmentViewModel.class);
-
-        PurchaseFragmentArgs args = PurchaseFragmentArgs.fromBundle(getArguments());
-        this.codMeal = args.getCodMeal();
-
-
-
-        this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
-            @Override
-            public void onChanged(Meal meal) {
-                mealSelected = meal;
-            }
-        });
 
         txtMainDish = view.findViewById(R.id.txtMainDishPurchase);
         txtSoup = view.findViewById(R.id.txtSoupPurchase);
         txtDesert = view.findViewById(R.id.txtDesertPurchase);
 
-        txtMainDish.setText(mealSelected.getMainDish());
-//        txtSoup.setText(mealSelected.getSoup());
-//        txtDesert.setText(mealSelected.getDesert());
-
         ImageView imgFood = view.findViewById(R.id.imgFood);
 
-        //Glide.with(this).load(mealSelected.getUrl()).into(imgFood);
+        PurchaseFragmentArgs args = PurchaseFragmentArgs.fromBundle(getArguments());
+        this.codMeal = args.getCodMeal();
+
+        this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
+            @Override
+            public void onChanged(Meal meal) {
+                txtMainDish.setText(meal.getMainDish());
+                txtSoup.setText(meal.getSoup());
+                txtDesert.setText(meal.getDesert());
+
+                mealName = meal.getMainDish();
+                mealUrl = meal.getUrl();
+
+                //Meal meal = meal; Não, dá, então arranjamos esta maneira
+            }
+        });
 
         Button btnBack = view.findViewById(R.id.btnBack);
         Button btnBuy = view.findViewById(R.id.btnBuy);
 
+        Glide.with(this).load(mealUrl).into(imgFood);
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavController navController = NavHostFragment.findNavController(PurchaseFragment.this);
-                navController.navigate(R.id.action_purchaseFragment_to_weekDay );
+                goToWeekday();
             }
         });
 
@@ -91,7 +86,7 @@ public class PurchaseFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Comprar Senha");
-                builder.setMessage("Tem a certeza que pretende comprar a senha para " + mealSelected.getMainDish() + "?");
+                builder.setMessage("Tem a certeza que pretende comprar a senha para " + mealName + "?");
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -101,29 +96,21 @@ public class PurchaseFragment extends Fragment {
                 builder.setPositiveButton("Comprar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                     //   AppDatabase.getInstance(ChatAdapter.this.context).getChatDao().delete(chat);
-                     //   chatList.remove(chat);
-                     //   notifyDataSetChanged();
-
-
-
+                        User user = SessionManager.getActiveSession(getActivity());
+                        Purchase newPurchase = new Purchase(0,codMeal, user.getCodUser());
+                        mViewModel.addPurchase(newPurchase);
                         dialog.dismiss();
+                        goToWeekday();
                     }
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
+    }
 
-
-
-
-
-
-
-
-
-
-
+    private void goToWeekday() {
+        NavController navController = NavHostFragment.findNavController(PurchaseFragment.this);
+        navController.navigate(R.id.action_purchaseFragment_to_weekDay );
     }
 }
