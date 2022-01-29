@@ -30,5 +30,4 @@ public class Datasource {
     public static PurchaseService getPurchaseService(){
         return retrofit.create(PurchaseService.class);
     }
-
 }

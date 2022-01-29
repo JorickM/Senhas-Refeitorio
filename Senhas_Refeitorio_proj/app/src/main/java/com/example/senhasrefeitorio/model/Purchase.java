@@ -7,13 +7,13 @@ import androidx.room.PrimaryKey;
 public class Purchase {
     @PrimaryKey
     private long codPurchase;
-    private long mealId;
-    private long userId;
+    private long codMeal;
+    private long codUser;
 
-    public Purchase(long codPurchase, long mealId, long userId) {
+    public Purchase(long codPurchase, long codMeal, long codUser) {
         this.codPurchase = codPurchase;
-        this.mealId = mealId;
-        this.userId = userId;
+        this.codMeal = codMeal;
+        this.codUser = codUser;
     }
 
     public long getCodPurchase() {
@@ -24,19 +24,19 @@ public class Purchase {
         this.codPurchase = codPurchase;
     }
 
-    public long getMealId() {
-        return mealId;
+    public long getCodMeal() {
+        return codMeal;
     }
 
-    public void setMealId(long mealId) {
-        this.mealId = mealId;
+    public void setCodMeal(long codMeal) {
+        this.codMeal = codMeal;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getCodUser() {
+        return codUser;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setCodUser(long codUser) {
+        this.codUser = codUser;
     }
 }

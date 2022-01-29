@@ -66,7 +66,6 @@ public class MealFragment extends Fragment implements MealAdapter.MealNavigator 
         this.mViewModel.updateList();
     }
 
-
     @Override
     public void goToPurchase(long codMeal) {
         NavDirections action =

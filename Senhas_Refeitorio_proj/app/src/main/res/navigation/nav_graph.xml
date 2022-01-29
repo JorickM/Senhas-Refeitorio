@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/PurchesesFragment"
-        android:name="com.example.senhasrefeitorio.view.PurchesesFragment"
+        android:name="com.example.senhasrefeitorio.view.PurchasesFragment"
         android:label="fragment_purcheses"
         tools:layout="@layout/fragment_purcheses" />
 </navigation>

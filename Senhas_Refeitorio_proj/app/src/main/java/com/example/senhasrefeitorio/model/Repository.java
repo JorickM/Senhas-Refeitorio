@@ -146,7 +146,7 @@ public class Repository {
     public void updatePurchaseList() {
         PurchaseService service = Datasource.getPurchaseService();
 
-        service.getPurchasesByCodUser().enqueue(new Callback<List<Purchase>>() {
+        service.getPurchases().enqueue(new Callback<List<Purchase>>() {
             @Override
             public void onResponse(Call<List<Purchase>> call, Response<List<Purchase>> response) {
                 if (response.isSuccessful()) {
@@ -191,5 +191,9 @@ public class Repository {
                 t.printStackTrace();
             }
         });
+    }
+
+    public LiveData<List<Purchase>> getPurchaseByUser(long codUser) {
+        return this.purchaseDao.getOnePurchaseByCodMeal(codUser);
     }
 }

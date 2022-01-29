@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 
 public interface PurchaseService {
     @GET("Purchases/")
-    Call<List<Purchase>> getPurchasesByCodUser();
+    Call<List<Purchase>> getPurchases();
 
     @POST("Purchases/")
     Call<Boolean>setPurchase(@Body Purchase purchase);
