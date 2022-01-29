@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStore;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.senhasrefeitorio.R;
@@ -16,6 +18,8 @@ import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.database.AppDatabase;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
+import com.example.senhasrefeitorio.viewmodel.LoginFragmentViewModel;
+import com.example.senhasrefeitorio.viewmodel.MealFragmentViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
 
     private final Context context;
     private List<Meal> mealList = new ArrayList<>();
+    private MealFragmentViewModel viewModel;
 
     public MealAdapter(Context context) {
         this.context = context;
@@ -33,6 +38,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
     @Override
     public MealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(this.context).inflate(R.layout.meal_item, parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -40,7 +46,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull MealAdapter.ViewHolder holder, int position) {
 
         User userFromLogin = SessionManager.getActiveSession(MealAdapter.this.context);
-
+        //iewModel = new ViewModelProvider(this).get(MealFragmentViewModel.class);
 
         Meal meal = this.mealList.get(position);
         holder.textViewMeal.setText(meal.getMainDish());
@@ -65,7 +71,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
                     public void onClick(DialogInterface dialog, int which) {
 
                         Purchase purchase = new Purchase(0,meal.getCodMeal(),userFromLogin.getCodUser());
-
+                        viewModel.addPurchase(purchase);
                         // chatList.remove(chat);
                        // notifyDataSetChanged();
                         dialog.dismiss();
@@ -73,12 +79,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-
-
-
-
-
 
             }
         });

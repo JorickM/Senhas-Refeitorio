@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.senhasrefeitorio.model.Meal;
+import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.Repository;
 import com.example.senhasrefeitorio.model.Weekday;
 
@@ -27,5 +28,10 @@ public class MealFragmentViewModel extends AndroidViewModel {
 
     public void updateList() {
         this.repository.updateMealList();
+    }
+
+
+    public void addPurchase(Purchase purchase) {
+        this.repository.addPurchase(purchase);
     }
 }
