@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_weekDay"
             app:destination="@id/weekDay" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_PurchesesFragment"
+            app:destination="@id/PurchesesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -56,19 +59,24 @@
             app:argType="long" />
         <action
             android:id="@+id/actionMealtoPurchaseFragment"
-            app:destination="@id/purchaseFragment" />
+            app:destination="@id/mealDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/purchaseFragment"
-        android:name="com.example.senhasrefeitorio.view.PurchaseFragment"
+        android:id="@+id/mealDetailsFragment"
+        android:name="com.example.senhasrefeitorio.view.MealDetailsFragment"
         android:label="fragment_purchase"
-        tools:layout="@layout/fragment_purchase" >
+        tools:layout="@layout/fragment_meal_details" >
         <argument
             android:name="codMeal"
             app:argType="long" />
         <action
-            android:id="@+id/action_purchaseFragment_to_weekDay"
-            app:destination="@id/weekDay" />
+            android:id="@+id/action_mealDetailsFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/PurchesesFragment"
+        android:name="com.example.senhasrefeitorio.view.PurchesesFragment"
+        android:label="fragment_purcheses"
+        tools:layout="@layout/fragment_purcheses" />
 </navigation>

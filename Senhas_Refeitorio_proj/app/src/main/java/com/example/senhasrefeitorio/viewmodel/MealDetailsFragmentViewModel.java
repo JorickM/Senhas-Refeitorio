@@ -10,10 +10,10 @@ import com.example.senhasrefeitorio.model.Meal;
 import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.Repository;
 
-public class PurchaseFragmentViewModel  extends AndroidViewModel {
+public class MealDetailsFragmentViewModel extends AndroidViewModel {
     private Repository repository;
 
-    public PurchaseFragmentViewModel(@NonNull Application application) {
+    public MealDetailsFragmentViewModel(@NonNull Application application) {
         super(application);
         this.repository = new Repository(application);
     }

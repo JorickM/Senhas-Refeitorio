@@ -25,10 +25,10 @@ import com.example.senhasrefeitorio.model.Meal;
 import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
-import com.example.senhasrefeitorio.viewmodel.PurchaseFragmentViewModel;
+import com.example.senhasrefeitorio.viewmodel.MealDetailsFragmentViewModel;
 
-public class PurchaseFragment extends Fragment {
-    private PurchaseFragmentViewModel mViewModel;
+public class MealDetailsFragment extends Fragment {
+    private MealDetailsFragmentViewModel mViewModel;
     private long codMeal;
 
     TextView txtMainDish, txtSoup, txtDesert;
@@ -37,14 +37,14 @@ public class PurchaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_purchase, container, false);
+        return inflater.inflate(R.layout.fragment_meal_details, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mViewModel = new ViewModelProvider(this).get(PurchaseFragmentViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(MealDetailsFragmentViewModel.class);
 
         txtMainDish = view.findViewById(R.id.txtMainDishPurchase);
         txtSoup = view.findViewById(R.id.txtSoupPurchase);
@@ -52,7 +52,7 @@ public class PurchaseFragment extends Fragment {
 
         ImageView imgFood = view.findViewById(R.id.imgFood);
 
-        PurchaseFragmentArgs args = PurchaseFragmentArgs.fromBundle(getArguments());
+        MealDetailsFragmentArgs args = MealDetailsFragmentArgs.fromBundle(getArguments());
         this.codMeal = args.getCodMeal();
 
         this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
@@ -77,7 +77,7 @@ public class PurchaseFragment extends Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToWeekday();
+                goToMenu();
             }
         });
 
@@ -100,7 +100,7 @@ public class PurchaseFragment extends Fragment {
                         Purchase newPurchase = new Purchase(0,codMeal, user.getCodUser());
                         mViewModel.addPurchase(newPurchase);
                         dialog.dismiss();
-                        goToWeekday();
+                        goToMenu();
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -109,8 +109,8 @@ public class PurchaseFragment extends Fragment {
         });
     }
 
-    private void goToWeekday() {
-        NavController navController = NavHostFragment.findNavController(PurchaseFragment.this);
-        navController.navigate(R.id.action_purchaseFragment_to_weekDay );
+    private void goToMenu() {
+        NavController navController = NavHostFragment.findNavController(MealDetailsFragment.this);
+        navController.navigate(R.id.action_mealDetailsFragment_to_mainMenuFragment);
     }
 }

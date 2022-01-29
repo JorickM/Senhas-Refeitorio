@@ -67,8 +67,8 @@ public class MainMenuFragment extends Fragment {
         btnGoToSenhas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavController navController = NavHostFragment.findNavController(MainMenuFragment.this);
-//                navController.navigate(R.id.action_mainMenuFragment_to_weekDay );
+                NavController navController = NavHostFragment.findNavController(MainMenuFragment.this);
+                navController.navigate(R.id.action_mainMenuFragment_to_PurchesesFragment);
             }
         });
     }
