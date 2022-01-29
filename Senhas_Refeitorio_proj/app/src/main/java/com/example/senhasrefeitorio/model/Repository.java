@@ -33,6 +33,7 @@ public class Repository {
         this.context = context;
         this.weekdayDao = AppDatabase.getInstance(context).getWeekDaysDao();
         this.mealDao = AppDatabase.getInstance(context).getMealsDao();
+        this.purchaseDao = AppDatabase.getInstance(context).getPurchaseDao();
     }
 
     public void tryToLoginUser(String email, String password) {
@@ -169,9 +170,9 @@ public class Repository {
         });
     }
 
-
-
-
+    public LiveData<Meal> getOneMeal(long codMeal) {
+        return this.mealDao.getOneMealByCodMeal(codMeal);
+    }
 
     public void addPurchase(Purchase purchase){
         PurchaseService service = Datasource.getPurchaseService();
@@ -193,9 +194,5 @@ public class Repository {
             }
         });
     }
-
-
-
-
 
 }

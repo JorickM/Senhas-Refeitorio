@@ -11,13 +11,15 @@ public class Meal {
     private String soup;
     private String desert;
     private long codWeekday;
+    private String url;
 
-    public Meal(long codMeal, String mainDish, String soup, String desert, long codWeekday) {
+    public Meal(long codMeal, String mainDish, String soup, String desert, long codWeekday, String url) {
         this.codMeal = codMeal;
         this.mainDish = mainDish;
         this.soup = soup;
         this.desert = desert;
         this.codWeekday = codWeekday;
+        this.url = url;
     }
 
     public long getCodMeal() {
@@ -58,5 +60,13 @@ public class Meal {
 
     public void setCodWeekday(long codWeekday) {
         this.codWeekday = codWeekday;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

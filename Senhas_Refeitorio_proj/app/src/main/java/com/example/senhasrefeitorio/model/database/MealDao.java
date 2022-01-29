@@ -34,6 +34,5 @@ public interface MealDao {
     LiveData<List<Meal>> getAllMealsByCodWeekday(long codWeekday);
 
     @Query("SELECT * FROM Meal WHERE codMeal = :codMeal")
-    LiveData<List<Meal>> getMealByCodMeal(long codMeal);
-
+    LiveData<Meal> getOneMealByCodMeal(long codMeal);
 }

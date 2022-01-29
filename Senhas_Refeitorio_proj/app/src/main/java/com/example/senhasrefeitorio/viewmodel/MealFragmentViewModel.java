@@ -29,5 +29,4 @@ public class MealFragmentViewModel extends AndroidViewModel {
     public void updateList() {
         this.repository.updateMealList();
     }
-
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -15,30 +16,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Meal;
 import com.example.senhasrefeitorio.viewmodel.MealFragmentViewModel;
+import com.example.senhasrefeitorio.viewmodel.PurchaseFragmentViewModel;
+
+import java.util.List;
 
 
 public class PurchaseFragment extends Fragment {
 
-
-    private MealFragmentViewModel mViewModel;
+    private PurchaseFragmentViewModel mViewModel;
     private long codMeal;
+    private Meal mealSelected;
 
     public PurchaseFragment() {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_purchase, container, false);
     }
 
@@ -46,11 +46,30 @@ public class PurchaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        mViewModel = new ViewModelProvider(this).get(MealFragmentViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(PurchaseFragmentViewModel.class);
 
         PurchaseFragmentArgs args = PurchaseFragmentArgs.fromBundle(getArguments());
         this.codMeal = args.getCodMeal();
+
+        this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
+            @Override
+            public void onChanged(Meal meal) {
+                mealSelected = meal;
+            }
+        });
+
+        TextView txtMainDish, txtSoup, txtDesert;
+        txtMainDish = view.findViewById(R.id.txtMainDishPurchase);
+        txtSoup = view.findViewById(R.id.txtSoupPurchase);
+        txtDesert = view.findViewById(R.id.txtDesertPurchase);
+
+        txtMainDish.setText(mealSelected.getMainDish());
+        txtSoup.setText(mealSelected.getSoup());
+        txtDesert.setText(mealSelected.getDesert());
+
+        ImageView imgFood = view.findViewById(R.id.imgFood);
+
+        //Glide.with(this).load(mealSelected.getUrl()).into(imgFood);
 
         Button btnBack = view.findViewById(R.id.btnBack);
         Button btnBuy = view.findViewById(R.id.btnBuy);
@@ -68,7 +87,7 @@ public class PurchaseFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Comprar Senha");
-                builder.setMessage("Tem a certeza que pretende comprar a senha ?");
+                builder.setMessage("Tem a certeza que pretende comprar a senha para " + mealSelected.getMainDish() + "?");
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -89,9 +108,6 @@ public class PurchaseFragment extends Fragment {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-//                NavController navController = NavHostFragment.findNavController(MainMenuFragment.this);
-//                navController.navigate(R.id.action_mainMenuFragment_to_weekDay );
             }
         });
 
