@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.senhasrefeitorio.model.database.AppDatabase;
 import com.example.senhasrefeitorio.model.database.MealDao;
 import com.example.senhasrefeitorio.model.database.PurchaseDao;
-import com.example.senhasrefeitorio.model.database.UserDao;
 import com.example.senhasrefeitorio.model.database.WeekdayDao;
 import com.example.senhasrefeitorio.model.remote.Datasource;
 import com.example.senhasrefeitorio.model.remote.MealService;
@@ -112,7 +111,7 @@ public class Repository {
     }
 
     public LiveData<List<Meal>> getAllMeals(long codWeekday) {
-        return this.mealDao.getAllById(codWeekday);
+        return this.mealDao.getAllMealsByCodWeekday(codWeekday);
     }
 
     public void updateMealList() {

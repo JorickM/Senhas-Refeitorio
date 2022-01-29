@@ -53,8 +53,8 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        Button btnGoToWeekDays = view.findViewById(R.id.btnEmenta);
-        Button btnGoToSenhas = view.findViewById(R.id.btnSenha);
+        Button btnGoToWeekDays = view.findViewById(R.id.btnWeekdays);
+        Button btnGoToSenhas = view.findViewById(R.id.btnPurchases);
 
         btnGoToWeekDays.setOnClickListener(new View.OnClickListener() {
             @Override

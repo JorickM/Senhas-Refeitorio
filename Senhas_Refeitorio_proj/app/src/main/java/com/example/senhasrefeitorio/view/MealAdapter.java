@@ -28,10 +28,11 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
 
     private final Context context;
     private List<Meal> mealList = new ArrayList<>();
-    private MealFragmentViewModel viewModel;
+    private MealNavigator navigator;
 
-    public MealAdapter(Context context) {
+    public MealAdapter(Context context, MealNavigator navigator) {
         this.context = context;
+        this.navigator = navigator;
     }
 
     @NonNull
@@ -45,9 +46,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MealAdapter.ViewHolder holder, int position) {
 
-        User userFromLogin = SessionManager.getActiveSession(MealAdapter.this.context);
-        //iewModel = new ViewModelProvider(this).get(MealFragmentViewModel.class);
-
         Meal meal = this.mealList.get(position);
         holder.textViewMeal.setText(meal.getMainDish());
         holder.textViewSoup.setText(meal.getSoup());
@@ -55,31 +53,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder>{
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(MealAdapter.this.context);
-                builder.setTitle("Comprar Senha");
-                builder.setMessage("Tem a certeza que pretende comprar a senha para " + meal.getMainDish() + "?");
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Purchase purchase = new Purchase(0,meal.getCodMeal(),userFromLogin.getCodUser());
-                        viewModel.addPurchase(purchase);
-                        // chatList.remove(chat);
-                       // notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
+                navigator.goToPurchase(meal.getCodMeal());
             }
         });
     }
@@ -108,4 +82,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         this.textViewDesert = this.root.findViewById(R.id.txtDesert);
     }
 }
+    public interface MealNavigator{
+        void goToPurchase(long codMeal);
+    }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainMenuFragment">
+    tools:context=".view.PurchaseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,47 +13,46 @@
         tools:context=".view.MainMenuActivity">
 
         <ImageView
-            android:id="@+id/imgUser"
+            android:id="@+id/imgFood"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="400dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logoipbeja" />
-
         <Button
-            android:id="@+id/btnWeekdays"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ementa"
+            android:id="@+id/btnBack"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="400dp"
+            android:text="Voltar"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.189"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.501" />
 
         <Button
-            android:id="@+id/btnPurchases"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Senhas"
+            android:id="@+id/btnBuy"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="400dp"
+            android:layout_marginEnd="16dp"
+            android:text="Comprar"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.817"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnWeekdays" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.501" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

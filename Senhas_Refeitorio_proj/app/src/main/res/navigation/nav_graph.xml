@@ -54,5 +54,21 @@
         <argument
             android:name="codWeekDay"
             app:argType="long" />
+        <action
+            android:id="@+id/actionMealtoPurchaseFragment"
+            app:destination="@id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.example.senhasrefeitorio.view.PurchaseFragment"
+        android:label="fragment_purchase"
+        tools:layout="@layout/fragment_purchase" >
+        <argument
+            android:name="codMeal"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_weekDay"
+            app:destination="@id/weekDay" />
+
     </fragment>
 </navigation>

@@ -30,8 +30,4 @@ public class MealFragmentViewModel extends AndroidViewModel {
         this.repository.updateMealList();
     }
 
-
-    public void addPurchase(Purchase purchase) {
-        this.repository.addPurchase(purchase);
-    }
 }

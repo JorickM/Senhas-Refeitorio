@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +23,7 @@ import com.example.senhasrefeitorio.R;
 
 import java.util.List;
 
-public class MealFragment extends Fragment {
+public class MealFragment extends Fragment implements MealAdapter.MealNavigator {
 
     private MealFragmentViewModel mViewModel;
     private MealAdapter adapter;
@@ -46,7 +48,7 @@ public class MealFragment extends Fragment {
         this.codWeekDay = args.getCodWeekDay();
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView2);
-        this.adapter = new MealAdapter(getActivity());
+        this.adapter = new MealAdapter(getActivity(),this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(this.adapter);
 
@@ -62,5 +64,13 @@ public class MealFragment extends Fragment {
     public void onResume() {
         super.onResume();
         this.mViewModel.updateList();
+    }
+
+
+    @Override
+    public void goToPurchase(long codMeal) {
+        NavDirections action =
+                MealFragmentDirections.actionMealtoPurchaseFragment(codMeal);
+        NavHostFragment.findNavController(this).navigate(action);
     }
 }
