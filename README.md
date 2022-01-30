@@ -8,24 +8,18 @@ Este repositorio é onde estara alocado o projeto de PAs(Programação de Aplica
 * Ricardo Coelho
 
 ## Requisitos de Aplicação
-### Requisitos Mínimos
 * Logins;
 * Criar um "home page";
-* Ver as senhas;
-* Marcar senhas;
-* Ver Hístorico das refeições;
+* Ver os dias da semana;
+* Marcar as senhas;
 * Ver detalhes do menu;
-* Simular um pagamento;
-
-### Requisitos Avançados
-* Adicionar métodos de Pagamento;
-* Transferir senhas;
-* Sistema de multa, paga mais no próprio dia;
+* Ver as senhas compradas;
+* Implementar uma API;
 
 ## Lista de tarefas
 1. Tarefa - Levantamento de Requisítos - [x];
 2. Tarefa - Desenho de interfaces - [x];
-3. Tarefa - Design no Android Studio - [];
+3. Tarefa - Design no Android Studio - [x];
 4. Tarefa - Elaboração do Projeto - [];
 5. Tarefa - Correção de Bugs - [];
 6. 
