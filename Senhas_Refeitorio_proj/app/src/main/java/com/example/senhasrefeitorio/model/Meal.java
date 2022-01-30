@@ -1,9 +1,14 @@
 package com.example.senhasrefeitorio.model;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = {@ForeignKey(entity = Weekday.class,
+        parentColumns = "codWeekday",
+        childColumns = "codWeekday",
+        onDelete = ForeignKey.CASCADE)
+})
 public class Meal {
     @PrimaryKey
     private long codMeal;

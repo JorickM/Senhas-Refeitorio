@@ -14,7 +14,6 @@ public class Datasource {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-
     public static UserService getUserService() {
         return retrofit.create(UserService.class);
     }

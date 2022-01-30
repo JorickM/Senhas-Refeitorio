@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Meal;
 import com.example.senhasrefeitorio.model.Purchase;
+import com.example.senhasrefeitorio.model.PurchaseWithMeal;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
 import com.example.senhasrefeitorio.viewmodel.MealDetailsFragmentViewModel;
@@ -48,9 +49,9 @@ public class PurchasesFragment extends Fragment {
 
         User user = SessionManager.getActiveSession(getActivity());
 
-        this.mViewModel.getAllPurchase(user.getCodUser()).observe(getActivity(), new Observer<List<Purchase>>() {
+        this.mViewModel.getAllPurchasesWithMealInformation(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
             @Override
-            public void onChanged(List<Purchase> purchaseList) {
+            public void onChanged(List<PurchaseWithMeal> purchaseList) {
                 PurchasesFragment.this.adapter.updateList(purchaseList);
             }
         });

@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.senhasrefeitorio.model.Purchase;
+import com.example.senhasrefeitorio.model.PurchaseWithMeal;
 import com.example.senhasrefeitorio.model.Repository;
 
 import java.util.List;
@@ -26,5 +27,9 @@ public class PurchaseFragmentViewModel extends AndroidViewModel {
 
     public LiveData<List<Purchase>> getAllPurchase(long codUser) {
         return this.repository.getPurchaseByUser(codUser);
+    }
+
+    public LiveData<List<PurchaseWithMeal>> getAllPurchasesWithMealInformation(long codUser) {
+        return this.repository.getAllPurchasesWithMealInformation(codUser);
     }
 }

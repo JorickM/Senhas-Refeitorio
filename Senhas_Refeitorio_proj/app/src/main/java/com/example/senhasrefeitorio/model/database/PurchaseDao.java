@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 import com.example.senhasrefeitorio.model.Meal;
 import com.example.senhasrefeitorio.model.Purchase;
+import com.example.senhasrefeitorio.model.PurchaseWithMeal;
 
 import java.util.List;
 
@@ -32,4 +33,7 @@ public interface PurchaseDao {
 
     @Query("SELECT * FROM Purchase WHERE codUser = :codUser")
     LiveData<List<Purchase>> getOnePurchaseByCodMeal(long codUser);
+
+    @Query("SELECT * FROM Purchase WHERE codUser = :codUser")
+    LiveData<List<PurchaseWithMeal>> getPurchaseWithMeal(long codUser);
 }

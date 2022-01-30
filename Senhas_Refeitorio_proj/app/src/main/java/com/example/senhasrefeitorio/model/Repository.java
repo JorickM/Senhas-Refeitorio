@@ -142,8 +142,9 @@ public class Repository {
         });
     }
 
-
     public void updatePurchaseList() {
+        updateMealList();
+
         PurchaseService service = Datasource.getPurchaseService();
 
         service.getPurchases().enqueue(new Callback<List<Purchase>>() {
@@ -195,5 +196,9 @@ public class Repository {
 
     public LiveData<List<Purchase>> getPurchaseByUser(long codUser) {
         return this.purchaseDao.getOnePurchaseByCodMeal(codUser);
+    }
+
+    public LiveData<List<PurchaseWithMeal>> getAllPurchasesWithMealInformation(long codUser) {
+        return this.purchaseDao.getPurchaseWithMeal(codUser);
     }
 }

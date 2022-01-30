@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Meal;
 import com.example.senhasrefeitorio.model.Purchase;
+import com.example.senhasrefeitorio.model.PurchaseWithMeal;
 import com.example.senhasrefeitorio.model.Repository;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.Weekday;
@@ -29,7 +30,7 @@ import java.util.List;
 public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.ViewHolder>{
 
     private final Context context;
-    private List<Purchase> purchaseList = new ArrayList<>();
+    private List<PurchaseWithMeal> purchaseList = new ArrayList<>();
 
     public PurchaseAdapter(Context context) {
         this.context = context;
@@ -44,8 +45,10 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull PurchaseAdapter.ViewHolder holder, int position) {
-        Purchase purchase = this.purchaseList.get(position);
+        PurchaseWithMeal purchase = this.purchaseList.get(position);
         Weekday weekday;
+
+        purchase.getMeal();
 
         //holder.textViewWeekday.setText(weekday.getDate());
 
@@ -62,21 +65,21 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.ViewHo
         return this.purchaseList.size();
     }
 
-    public void updateList(List<Purchase> newList) {
+    public void updateList(List<PurchaseWithMeal> newList) {
         this.purchaseList = newList;
         notifyDataSetChanged();
     }
 
-public class ViewHolder extends RecyclerView.ViewHolder {
-    View root;
-    TextView txtPurchWeekday1;
-    TextView txtPurchMeal1;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        View root;
+        TextView txtPurchWeekday1;
+        TextView txtPurchMeal1;
 
-    public ViewHolder(@NonNull View itemView) {
-        super(itemView);
-        this.root = itemView;
-        this.txtPurchWeekday1 = this.root.findViewById(R.id.txtPurchWeekday);
-        this.txtPurchMeal1 = this.root.findViewById(R.id.txtPurchMeal);
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            this.root = itemView;
+            this.txtPurchWeekday1 = this.root.findViewById(R.id.txtPurchWeekday);
+            this.txtPurchMeal1 = this.root.findViewById(R.id.txtPurchMeal);
+        }
     }
-}
 }
