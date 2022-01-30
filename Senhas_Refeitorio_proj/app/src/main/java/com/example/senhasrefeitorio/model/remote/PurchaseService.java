@@ -12,9 +12,9 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface PurchaseService {
-    @GET("Purchases/")
+    @GET("purchases/all")
     Call<List<Purchase>> getPurchases();
 
-    @POST("Purchases/")
+    @POST("purchases/")
     Call<Boolean>setPurchase(@Body Purchase purchase);
 }

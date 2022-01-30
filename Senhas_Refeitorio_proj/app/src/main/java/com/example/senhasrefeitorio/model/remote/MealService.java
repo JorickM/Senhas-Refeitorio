@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface MealService {
-    @GET("Meals/")
+    @GET("meals/")
     Call<List<Meal>> getMealsByCodWeekday();
 }

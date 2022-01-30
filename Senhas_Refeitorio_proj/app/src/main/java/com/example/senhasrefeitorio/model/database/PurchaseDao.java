@@ -22,8 +22,8 @@ public interface PurchaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void add(Purchase purchase);
 
-    @Insert
-    void add(List<Purchase> purchaseList);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void addList(List<Purchase> purchaseList);
 
     @Delete
     void delete(Purchase purchase);

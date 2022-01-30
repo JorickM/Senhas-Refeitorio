@@ -76,7 +76,7 @@ public class Repository {
         return this.weekdayDao.getAllWeekdays();
     }
 
-    public void updateList() {
+    public void updateWeekDayList() {
         WeekdayService service = Datasource.getWeekdayService();
 
         Call<List<Weekday>> call = service.getWeekDays();
@@ -142,8 +142,6 @@ public class Repository {
     }
 
     public void updatePurchaseList() {
-        updateMealList();
-
         PurchaseService service = Datasource.getPurchaseService();
 
         service.getPurchases().enqueue(new Callback<List<Purchase>>() {

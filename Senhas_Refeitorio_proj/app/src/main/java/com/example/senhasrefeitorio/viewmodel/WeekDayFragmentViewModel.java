@@ -23,8 +23,7 @@ public class WeekDayFragmentViewModel extends AndroidViewModel {
         return this.repository.getAllWeekdays();
     }
 
-
     public void updateList() {
-        this.repository.updateList();
+        this.repository.updateWeekDayList();
     }
 }

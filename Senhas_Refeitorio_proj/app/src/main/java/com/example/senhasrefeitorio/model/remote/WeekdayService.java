@@ -12,6 +12,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface WeekdayService {
-    @GET("WeekDays/")
+    @GET("weekdays/")
     Call<List<Weekday>> getWeekDays();
 }

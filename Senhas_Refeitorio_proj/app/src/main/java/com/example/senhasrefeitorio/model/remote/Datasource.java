@@ -11,7 +11,8 @@ public class Datasource {
 
     private static Retrofit retrofit = new Retrofit.Builder()
             // .baseUrl("https://my-json-server.typicode.com/ricardooooooo/senhasDB/")
-            .baseUrl("http://10.0.2.2:8000/api/")
+            //.baseUrl("http://10.0.2.2:8000/api/")
+            .baseUrl("http://213.22.38.244:8000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
