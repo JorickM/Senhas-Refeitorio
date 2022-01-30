@@ -40,7 +40,7 @@ class PurchaseController extends Controller
         $purchase->save();
     
         return response()->json([
-            "message" => "student record created"
+            "message" => "Purchase record created"
         ], 201);
     }
 
@@ -68,7 +68,7 @@ class PurchaseController extends Controller
             return response($codPurchase, 200);
           } else {
             return response()->json([
-              "message" => "Student not found"
+              "message" => "Purchase not found"
             ], 404);
           }
       }
@@ -91,20 +91,19 @@ class PurchaseController extends Controller
      * @param  \App\Models\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$codPurchase)
+    public function update(Request $request)
     {
-        if (Purchase::where('codPurchase', $codPurchase)->exists()) {
-            $purchase = Purchase::find($codPurchase);
+        if (Purchase::where('codPurchase', $request->codPurchase)->exists()) {
+            $purchase = Purchase::where('codPurchase', $request->codPurchase)->first();
             $purchase->codMeal = is_null($request->codMeal) ? $purchase->codMeal : $request->codMeal;
             $purchase->codUser = is_null($request->codUser) ? $purchase->codUser : $request->codUser;
-           
             $purchase->save();
             return response()->json([
                 "message" => "records updated successfully"
             ], 200);
             } else {
             return response()->json([
-                "message" => "Student not found"
+                "message" => "Purchase not found"
             ], 404);
             
         }
@@ -119,7 +118,7 @@ class PurchaseController extends Controller
     public function destroy($codPurchase)
     {
         if(Purchase::where('codPurchase', $codPurchase)->exists()) {
-            $purchase = Purchase::find($codPurchase);
+            $purchase = Purchase::where('codPurchase', $codPurchase);
             $purchase->delete();
     
             return response()->json([
@@ -127,7 +126,7 @@ class PurchaseController extends Controller
             ], 202);
           } else {
             return response()->json([
-              "message" => "Student not found"
+              "message" => "Purchase not found"
             ], 404);
           }
         }

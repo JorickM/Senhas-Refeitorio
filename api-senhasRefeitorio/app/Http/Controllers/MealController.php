@@ -34,7 +34,7 @@ class MealController extends Controller
         $meal->save();
     
         return response()->json([
-            "message" => "student record created"
+            "message" => "Meal record created"
         ], 201);
     }
 
@@ -85,18 +85,15 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$codMeal)
+    public function update(Request $request)
     {
-        if (Meal::where('codMeal', $codMeal)->exists()) {
-            $meal = Meal::find($codMeal);
+        if (Meal::where('codMeal', $request->codMeal)->exists()) {
+            $meal = Meal::where('codMeal', $request->codMeal)->first();
             $meal->codWeekday = is_null($request->codWeekday) ? $meal->codWeekday : $request->codWeekday;
             $meal->mainDish = is_null($request->mainDish) ? $meal->mainDish : $request->mainDish;
             $meal->soup = is_null($request->soup) ? $meal->soup : $request->soup;
             $meal->desert = is_null($request->desert) ? $meal->desert : $request->desert;
             $meal->url = is_null($request->url) ? $meal->url : $request->url;
-           
-           
-        
             $meal->save();
     
             return response()->json([
@@ -119,7 +116,7 @@ class MealController extends Controller
     public function destroy($codMeal)
     {
         if(Meal::where('codMeal', $codMeal)->exists()) {
-            $meal = Meal::find($codMeal);
+            $meal = Meal::where('codMeal', $codMeal);
             $meal->delete();
     
             return response()->json([
@@ -127,7 +124,7 @@ class MealController extends Controller
             ], 202);
           } else {
             return response()->json([
-              "message" => "Student not found"
+              "message" => "Meal not found"
             ], 404);
           }
     }

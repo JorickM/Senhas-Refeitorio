@@ -36,12 +36,8 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.ViewHo
     public void onBindViewHolder(@NonNull PurchaseAdapter.ViewHolder holder, int position) {
         PurchaseWithMeal purchase = this.purchaseList.get(position);
 
-
-        Weekday weekday;
-
-        purchase.getMealWithWeekday();
-
-        //holder.textViewWeekday.setText(weekday.getDate());
+        holder.txtPurchMeal1.setText(purchase.getMealWithWeekday().getMeal().getMainDish());
+        holder.txtPurchWeekday1.setText(purchase.getMealWithWeekday().getWeekday().getDate());
 
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override

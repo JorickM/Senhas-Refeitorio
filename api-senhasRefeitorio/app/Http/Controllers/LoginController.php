@@ -43,7 +43,7 @@ class LoginController extends Controller
         $login->save();
     
         return response()->json([
-            "message" => "student record created"
+            "message" => "User record created"
         ], 201);
     }
 
@@ -104,9 +104,6 @@ class LoginController extends Controller
             $login->password = is_null($request->password) ? $login->password : $request->password;
             $login->url = is_null($request->url) ? $login->url : $request->url;
             $login->type = is_null($request->type) ? $login->type : $request->type;
-           
-           
-        
             $login->save();
     
             return response()->json([
@@ -114,7 +111,7 @@ class LoginController extends Controller
             ], 200);
             } else {
             return response()->json([
-                "message" => "Student not found"
+                "message" => "User not found"
             ], 404);
             
         }
@@ -137,7 +134,7 @@ class LoginController extends Controller
             ], 202);
           } else {
             return response()->json([
-              "message" => "aiiiii"
+              "message" => "user not found"
             ], 404);
           }
     }

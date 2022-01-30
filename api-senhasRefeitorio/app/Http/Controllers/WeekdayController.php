@@ -31,7 +31,7 @@ class WeekdayController extends Controller
         $weekday->save();
     
         return response()->json([
-            "message" => "student record created"
+            "message" => "WeekDay record created"
         ], 201);
     }
 
@@ -59,7 +59,7 @@ class WeekdayController extends Controller
             return response($codWeekday, 200);
           } else {
             return response()->json([
-              "message" => "Student not found"
+              "message" => "WeekDay not found"
             ], 404);
           }
       }
@@ -82,10 +82,10 @@ class WeekdayController extends Controller
      * @param  \App\Models\Weekday  $weekday
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $codWeekday)
+    public function update(Request $request)
     {
-        if (Weekday::where('codWeekday', $codWeekday)->exists()) {
-            $weekday = Weekday::find($codWeekday);
+        if (Weekday::where('codWeekday', $request->codWeekday)->exists()) {
+            $weekday = Weekday::where('codWeekday', $request->codWeekday);
             $weekday->name = is_null($request->name) ? $weekday->name : $request->name;
             $weekday->date = is_null($request->date) ? $weekday->date : $request->date;
            
@@ -95,7 +95,7 @@ class WeekdayController extends Controller
             ], 200);
             } else {
             return response()->json([
-                "message" => "Student not found"
+                "message" => "WeekDay not found"
             ], 404);
             
         }
@@ -110,7 +110,7 @@ class WeekdayController extends Controller
     public function destroy($codWeekday)
     {
         if(Weekday::where('codWeekday', $codWeekday)->exists()) {
-            $weekday = Weekday::find($codWeekday);
+            $weekday = Weekday::where('codPurchase', $codPurchase);
             $weekday->delete();
     
             return response()->json([
@@ -118,7 +118,7 @@ class WeekdayController extends Controller
             ], 202);
           } else {
             return response()->json([
-              "message" => "Student not found"
+              "message" => "WeekDay not found"
             ], 404);
           }
         }

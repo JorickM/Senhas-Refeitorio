@@ -35,18 +35,18 @@ Route::post('logins', [LoginController::class, 'postLoginByEmailPassword']);
 Route::post('weekdays',[WeekdayController::class,'create']);
 Route::get('weekdays',[WeekdayController::class,'index']);
 Route::get('weekdays/{codWeekday}',[WeekdayController::class,'show']);
-Route::put('weekdays/{codWeekday}',[WeekdayController::class,'update']);
+Route::put('weekdays/',[WeekdayController::class,'update']);
 Route::delete('weekdays/{codWeekday}',[WeekdayController::class,'destroy']);
 
 Route::get('meals',[MealController::class,'index']);
 Route::get('meals/{codMeal}',[MealController::class,'show']);
 Route::post('meals',[MealController::class,'create']);
-Route::put('meals/{codMeal}',[MealController::class,'update']);
+Route::put('meals/',[MealController::class,'update']);
 Route::delete('meals/{codMeal}',[MealController::class,'destroy']);
 
 Route::get('purchases/all',[PurchaseController::class,'index']);
 Route::get('purchases/byUser/{codUser}',[PurchaseController::class,'byUser']);
 Route::get('purchases/{codPurchase}',[PurchaseController::class,'show']);
 Route::post('purchases',[PurchaseController::class,'create']);
-Route::put('purchases/{codPurchase}',[PurchaseController::class,'update']);
+Route::put('purchases/',[PurchaseController::class,'update']);
 Route::delete('purchases/{codPurchase}',[PurchaseController::class,'destroy']);
