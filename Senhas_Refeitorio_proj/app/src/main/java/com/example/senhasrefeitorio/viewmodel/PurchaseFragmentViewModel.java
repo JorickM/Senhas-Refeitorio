@@ -21,15 +21,15 @@ public class PurchaseFragmentViewModel extends AndroidViewModel {
         this.repository = new Repository(application);
     }
 
-    public void updateList() {
+    public void updatePurchaseList() {
         this.repository.updatePurchaseList();
     }
 
-    public LiveData<List<Purchase>> getAllPurchase(long codUser) {
-        return this.repository.getPurchaseByUser(codUser);
+    public LiveData<List<PurchaseWithMeal>> getUsedPurchases(long codUser) {
+        return this.repository.getUsedPurchases(codUser);
     }
 
-    public LiveData<List<PurchaseWithMeal>> getAllPurchasesWithMealInformation(long codUser) {
-        return this.repository.getAllPurchasesWithMealInformation(codUser);
+    public LiveData<List<PurchaseWithMeal>> getPurchaseWithUnusedMeal(long codUser) {
+        return this.repository.getPurchaseWithUnusedMeal(codUser);
     }
 }

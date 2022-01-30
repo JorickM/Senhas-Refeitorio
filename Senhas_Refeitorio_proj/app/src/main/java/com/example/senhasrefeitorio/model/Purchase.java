@@ -14,11 +14,13 @@ public class Purchase {
     private long codPurchase;
     private long codMeal;
     private long codUser;
+    private boolean flgUsed;
 
-    public Purchase(long codPurchase, long codMeal, long codUser) {
+    public Purchase(long codPurchase, long codMeal, long codUser, boolean flgUsed) {
         this.codPurchase = codPurchase;
         this.codMeal = codMeal;
         this.codUser = codUser;
+        this.flgUsed = flgUsed;
     }
 
     public long getCodPurchase() {
@@ -43,5 +45,13 @@ public class Purchase {
 
     public void setCodUser(long codUser) {
         this.codUser = codUser;
+    }
+
+    public boolean isFlgUsed() {
+        return flgUsed;
+    }
+
+    public void setFlgUsed(boolean flgUsed) {
+        this.flgUsed = flgUsed;
     }
 }

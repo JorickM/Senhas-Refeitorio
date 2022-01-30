@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,22 +53,27 @@ public class MealDetailsFragment extends Fragment {
 
         ImageView imgFood = view.findViewById(R.id.imgFood);
 
-        MealDetailsFragmentArgs args = MealDetailsFragmentArgs.fromBundle(getArguments());
-        this.codMeal = args.getCodMeal();
+        try {
+            MealDetailsFragmentArgs args = MealDetailsFragmentArgs.fromBundle(getArguments());
+            this.codMeal = args.getCodMeal();
 
-        this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
-            @Override
-            public void onChanged(Meal meal) {
-                txtMainDish.setText(meal.getMainDish());
-                txtSoup.setText(meal.getSoup());
-                txtDesert.setText(meal.getDesert());
+            this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
+                @Override
+                public void onChanged(Meal meal) {
+                    txtMainDish.setText(meal.getMainDish());
+                    txtSoup.setText(meal.getSoup());
+                    txtDesert.setText(meal.getDesert());
 
-                mealName = meal.getMainDish();
-                mealUrl = meal.getUrl();
+                    mealName = meal.getMainDish();
+                    mealUrl = meal.getUrl();
 
-                //Meal meal = meal; Não, dá, então arranjamos esta maneira
-            }
-        });
+                    //Meal meal = meal; Não, dá, então arranjamos esta maneira
+                }
+            });
+        }
+        catch(Exception e) {
+            Log.i("MEAL_DETAIL_FRAGMENT", "Error");
+        }
 
         Button btnBack = view.findViewById(R.id.btnBack);
         Button btnBuy = view.findViewById(R.id.btnBuy);
@@ -97,7 +103,7 @@ public class MealDetailsFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         User user = SessionManager.getActiveSession(getActivity());
-                        Purchase newPurchase = new Purchase(0,codMeal, user.getCodUser());
+                        Purchase newPurchase = new Purchase(0,codMeal, user.getCodUser(), false);
                         mViewModel.addPurchase(newPurchase);
                         dialog.dismiss();
                         goToMenu();

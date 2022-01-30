@@ -191,11 +191,11 @@ public class Repository {
         });
     }
 
-    public LiveData<List<Purchase>> getPurchaseByUser(long codUser) {
-        return this.purchaseDao.getOnePurchaseByCodMeal(codUser);
+    public LiveData<List<PurchaseWithMeal>> getUsedPurchases(long codUser) {
+        return this.purchaseDao.getUsedPurchaseWithMeal(codUser);
     }
 
-    public LiveData<List<PurchaseWithMeal>> getAllPurchasesWithMealInformation(long codUser) {
-        return this.purchaseDao.getPurchaseWithMeal(codUser);
+    public LiveData<List<PurchaseWithMeal>> getPurchaseWithUnusedMeal(long codUser) {
+        return this.purchaseDao.getPurchaseWithUnusedMeal(codUser);
     }
 }

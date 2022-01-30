@@ -49,7 +49,7 @@ public class PurchasesFragment extends Fragment {
 
         User user = SessionManager.getActiveSession(getActivity());
 
-        this.mViewModel.getAllPurchasesWithMealInformation(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
+        this.mViewModel.getUsedPurchases(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
             @Override
             public void onChanged(List<PurchaseWithMeal> purchaseList) {
                 PurchasesFragment.this.adapter.updateList(purchaseList);
@@ -60,6 +60,6 @@ public class PurchasesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        this.mViewModel.updateList();
+        this.mViewModel.updatePurchaseList();
     }
 }

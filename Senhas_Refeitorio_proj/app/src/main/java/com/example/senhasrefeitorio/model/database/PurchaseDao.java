@@ -31,9 +31,9 @@ public interface PurchaseDao {
     @Update
     void update(Purchase purchase);
 
-    @Query("SELECT * FROM Purchase WHERE codUser = :codUser")
-    LiveData<List<Purchase>> getOnePurchaseByCodMeal(long codUser);
+    @Query("SELECT * FROM Purchase WHERE codUser = :codUser AND flgUsed = 1")
+    LiveData<List<PurchaseWithMeal>> getUsedPurchaseWithMeal(long codUser);
 
-    @Query("SELECT * FROM Purchase WHERE codUser = :codUser")
-    LiveData<List<PurchaseWithMeal>> getPurchaseWithMeal(long codUser);
+    @Query("SELECT * FROM Purchase WHERE codUser = :codUser AND flgUsed = 0")
+    LiveData<List<PurchaseWithMeal>> getPurchaseWithUnusedMeal(long codUser);
 }
