@@ -121,7 +121,7 @@ class LoginController extends Controller
      */
     public function destroy($codUser)
     {
-        if(Login::where('id', $codUser)->exists()) {
+        if(Login::where('codUser', $codUser)->exists()) {
             $login = Login::find($codUser);
             $login->delete();
     
