@@ -10,7 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Datasource {
 
     private static Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://my-json-server.typicode.com/ricardooooooo/senhasDB/")
+            // .baseUrl("https://my-json-server.typicode.com/ricardooooooo/senhasDB/")
+            .baseUrl("http://10.0.2.2:8000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

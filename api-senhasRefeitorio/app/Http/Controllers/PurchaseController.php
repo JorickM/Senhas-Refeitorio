@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Purchase;
+use App\Models\Meal;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -16,6 +17,14 @@ class PurchaseController extends Controller
     {
         $purchase = Purchase::get()->toJson(JSON_PRETTY_PRINT);
         return response($purchase, 200);
+    }
+
+    public function byUser($codUser) {
+        $purchases = Purchase::where('codUser', $codUser)->get();
+        foreach($purchases as $purchase) {
+          $purchase->meal = Meal::where('codMeal', $purchase->codMeal)->first();
+        }
+        return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
     }
 
     /**

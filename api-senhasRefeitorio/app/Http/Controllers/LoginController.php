@@ -19,6 +19,13 @@ class LoginController extends Controller
         return response($login, 200);
     }
 
+    public function postLoginByEmailPassword(Request $request)
+    {
+      # code...
+      $login = Login::where('email',$request->email)->where('password',$request->password)->first();
+      return response($login, 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -87,10 +94,10 @@ class LoginController extends Controller
      * @param  \App\Models\Login  $login
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$codUser)
+    public function update(Request $request)
     {
-        if (Login::where('codUser', $codUser)->exists()) {
-            $login = Login::find($codUser);
+        if (Login::where('codUser', $request->codUser)->exists()) {
+            $login = Login::where('codUser', $request->codUser)->first();
             $login->name = is_null($request->name) ? $login->name : $request->name;
             $login->lastName = is_null($request->lastName) ? $login->lastName : $request->lastName;
             $login->email = is_null($request->email) ? $login->email : $request->email;
@@ -122,7 +129,7 @@ class LoginController extends Controller
     public function destroy($codUser)
     {
         if(Login::where('codUser', $codUser)->exists()) {
-            $login = Login::find($codUser);
+            $login = Login::where('codUser', $codUser);
             $login->delete();
     
             return response()->json([

@@ -9,11 +9,11 @@ public class PurchaseWithMeal {
     private Purchase purchase;
 
     @Relation(parentColumn = "codMeal", entityColumn = "codMeal", entity = Meal.class)
-    private MealWithWeekday meal;
+    private MealWithWeekday mealWithWeekday;
 
-    public PurchaseWithMeal(Purchase purchase, MealWithWeekday meal) {
+    public PurchaseWithMeal(Purchase purchase, MealWithWeekday mealWithWeekday) {
         this.purchase = purchase;
-        this.meal = meal;
+        this.mealWithWeekday = mealWithWeekday;
     }
 
     public Purchase getPurchase() {
@@ -24,11 +24,11 @@ public class PurchaseWithMeal {
         this.purchase = purchase;
     }
 
-    public MealWithWeekday getMeal() {
-        return meal;
+    public MealWithWeekday getMealWithWeekday() {
+        return mealWithWeekday;
     }
 
-    public void setMeal(MealWithWeekday meal) {
-        this.meal = meal;
+    public void setMealWithWeekday(MealWithWeekday mealWithWeekday) {
+        this.mealWithWeekday = mealWithWeekday;
     }
 }

@@ -37,26 +37,25 @@ public class Repository {
     }
 
     public void tryToLoginUser(String email, String password) {
-        Datasource.getUserService().getUser(email, password).enqueue(new Callback<List<User>>() {
+        Datasource.getUserService().loginUser(new LoginModel(email, password)).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    if (response.body().size() > 0) {
-                        User user1 = response.body().get(0);
-                        SessionManager.saveSession(Repository.this.context, user1);
-                        userMutableLiveData.postValue(user1);
-                    } else {
-                        userMutableLiveData.postValue(null);
+                    User user = response.body();
+                    if (null != user) {
+                        SessionManager.saveSession(Repository.this.context, user);
                     }
+                    userMutableLiveData.postValue(user);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 t.printStackTrace();
                 userMutableLiveData.postValue(null);
             }
         });
+
     }
 
     public LiveData<User> getLoggedInUser() {

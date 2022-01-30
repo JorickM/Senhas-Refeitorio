@@ -7,22 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.senhasrefeitorio.R;
-import com.example.senhasrefeitorio.model.Meal;
-import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.PurchaseWithMeal;
-import com.example.senhasrefeitorio.model.Repository;
-import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.Weekday;
-import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
-import com.example.senhasrefeitorio.viewmodel.MealDetailsFragmentViewModel;
-import com.example.senhasrefeitorio.viewmodel.MealFragmentViewModel;
-import com.example.senhasrefeitorio.viewmodel.PurchaseFragmentViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,9 +35,11 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull PurchaseAdapter.ViewHolder holder, int position) {
         PurchaseWithMeal purchase = this.purchaseList.get(position);
+
+
         Weekday weekday;
 
-        purchase.getMeal();
+        purchase.getMealWithWeekday();
 
         //holder.textViewWeekday.setText(weekday.getDate());
 
