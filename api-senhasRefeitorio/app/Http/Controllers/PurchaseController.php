@@ -37,6 +37,7 @@ class PurchaseController extends Controller
         $purchase = new Purchase;
         $purchase->codMeal = $request->codMeal;
         $purchase->codUser = $request->codUser;
+        $purchase->flgUsed = $request->flgUsed;
         $purchase->save();
     
         return response()->json([
@@ -97,6 +98,7 @@ class PurchaseController extends Controller
             $purchase = Purchase::where('codPurchase', $request->codPurchase)->first();
             $purchase->codMeal = is_null($request->codMeal) ? $purchase->codMeal : $request->codMeal;
             $purchase->codUser = is_null($request->codUser) ? $purchase->codUser : $request->codUser;
+            $purchase->flgUsed = is_null($request->flgUsed) ? $purchase->flgUsed : $request->flgUsed;
             $purchase->save();
             return response()->json([
                 "message" => "records updated successfully"

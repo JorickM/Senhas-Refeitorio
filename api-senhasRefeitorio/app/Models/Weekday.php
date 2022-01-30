@@ -11,6 +11,8 @@ class Weekday extends Model
    
     use HasFactory;
 
+    protected $primaryKey = 'codWeekday';
+
     protected $table = 'weekdays';
 
     protected $fillable = ['name', 'date'];

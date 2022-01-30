@@ -16,7 +16,8 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->integer('codPurchase')->autoIncrement();
             $table->integer('codMeal');
-            $table->integer('codUser');     
+            $table->integer('codUser');
+            $table->boolean('flgUsed');     
             $table->timestamps();
         });
     }

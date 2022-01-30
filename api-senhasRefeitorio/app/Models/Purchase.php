@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Purchase extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'codPurchase';
     
     protected $table = 'purchases';
 
-    protected $fillable = ['codMeal', 'codUser'];
+    protected $fillable = ['codMeal', 'codUser', 'flgUsed'];
 }
