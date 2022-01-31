@@ -52,7 +52,7 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.ViewHo
                 try {
                     MultiFormatWriter writer = new MultiFormatWriter();
 
-                    BitMatrix matrix = writer.encode(purchase.getMealWithWeekday().getMeal().getMainDish() + " " + purchase.getMealWithWeekday().getWeekday().getDate(), BarcodeFormat.QR_CODE, 350, 350);
+                    BitMatrix matrix = writer.encode(purchase.getMealWithWeekday().getMeal().getMainDish() + " " + purchase.getMealWithWeekday().getWeekday().getDate(), BarcodeFormat.QR_CODE, 100, 100);
 
                     BarcodeEncoder encoder = new BarcodeEncoder();
                     Bitmap bitmap = encoder.createBitmap(matrix);

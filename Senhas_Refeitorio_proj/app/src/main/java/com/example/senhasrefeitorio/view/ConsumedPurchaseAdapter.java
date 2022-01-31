@@ -42,6 +42,24 @@ public class ConsumedPurchaseAdapter extends RecyclerView.Adapter<ConsumedPurcha
 
         holder.txtPurchMeal1.setText(purchase.getMealWithWeekday().getMeal().getMainDish());
         holder.txtPurchWeekday1.setText(purchase.getMealWithWeekday().getWeekday().getDate());
+
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    MultiFormatWriter writer = new MultiFormatWriter();
+
+                    BitMatrix matrix = writer.encode(purchase.getMealWithWeekday().getMeal().getMainDish() + " " + purchase.getMealWithWeekday().getWeekday().getDate(), BarcodeFormat.QR_CODE, 100, 100);
+
+                    BarcodeEncoder encoder = new BarcodeEncoder();
+                    Bitmap bitmap = encoder.createBitmap(matrix);
+
+                    holder.imgQrCode.setImageBitmap(bitmap);
+                }catch (Exception e){
+
+                }
+            }
+        });
     }
 
     @Override
@@ -58,12 +76,14 @@ public class ConsumedPurchaseAdapter extends RecyclerView.Adapter<ConsumedPurcha
         View root;
         TextView txtPurchWeekday1;
         TextView txtPurchMeal1;
+        ImageView imgQrCode;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.root = itemView;
             this.txtPurchWeekday1 = this.root.findViewById(R.id.txtPurchWeekday);
             this.txtPurchMeal1 = this.root.findViewById(R.id.txtPurchMeal);
+            this.imgQrCode = this.root.findViewById(R.id.imageView2);
         }
     }
 }

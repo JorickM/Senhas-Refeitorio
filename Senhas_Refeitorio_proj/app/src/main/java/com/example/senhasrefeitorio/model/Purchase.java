@@ -14,8 +14,8 @@ public class Purchase {
     @PrimaryKey
     private long codPurchase;
     private long codMeal;
-    @Ignore
-    private Meal meal;
+    //@Ignore
+    //private Meal meal;
     private long codUser;
     private Integer flgUsed;
 

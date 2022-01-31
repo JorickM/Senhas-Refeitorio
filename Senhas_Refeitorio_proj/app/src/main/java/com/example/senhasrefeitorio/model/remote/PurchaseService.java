@@ -15,8 +15,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface PurchaseService {
-    @GET("purchases/byUser/{codUser}")
-    Call<List<Purchase>> getPurchases(@Path("codUser") long codUser);
+/*    @GET("purchases/byUser/{codUser}")
+    Call<List<Purchase>> getPurchases(@Path("codUser") long codUser);*/
+
+    @GET("purchases/all")
+    Call<List<Purchase>> getPurchases();
 
     @POST("purchases/")
     Call<Boolean>setPurchase(@Body Purchase purchase);

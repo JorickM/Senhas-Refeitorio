@@ -141,7 +141,9 @@ public class Repository {
         });
     }
 
-    public void updatePurchaseList(Long codUser) {
+    //MANEIRA MAIS CORRETA MAS NÃO ESTAMOS A CONSEGUIR
+
+    /*public void updatePurchaseList(Long codUser) {
         updateWeekDayList();
         updateMealList();
 
@@ -164,6 +166,32 @@ public class Repository {
                     }).start();
                 } else {
                     // Log error to logcat
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Purchase>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }*/
+
+    public void updatePurchaseList() {
+        PurchaseService service = Datasource.getPurchaseService();
+
+        service.getPurchases().enqueue(new Callback<List<Purchase>>() {
+            @Override
+            public void onResponse(Call<List<Purchase>> call, Response<List<Purchase>> response) {
+                if (response.isSuccessful()) {
+                    List<Purchase> purchases = response.body();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (Purchase purchase : purchases) {
+                                purchaseDao.add(purchase);
+                            }
+                        }
+                    }).start();
+                } else {
                 }
             }
             @Override

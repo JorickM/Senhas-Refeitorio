@@ -52,7 +52,7 @@ public class PurchasesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(this.adapter);
 
-         this.user = SessionManager.getActiveSession(getActivity());
+        this.user = SessionManager.getActiveSession(getActivity());
 
         this.mViewModel.getPurchaseWithUnusedMeal(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
             @Override
@@ -62,9 +62,16 @@ public class PurchasesFragment extends Fragment {
         });
     }
 
-    @Override
+    //maneira correta
+/*    @Override
     public void onResume() {
         super.onResume();
         mViewModel.updatePurchaseList(this.user.getCodUser());
+    }*/
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.updatePurchaseList();
     }
 }
