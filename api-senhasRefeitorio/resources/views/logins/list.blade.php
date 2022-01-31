@@ -10,21 +10,14 @@
         </div>
     </div>
 
-                         @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-
-
-                        @endif
-
-                    {{ __('You are logged in!') }}
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
+        </div>
+    @endif
 
-            <table class="table table-bordered">
+    @auth
+    <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>First Name</th>
@@ -58,9 +51,5 @@
             </tr>
         @endforeach
     </table>
-
-        </div>
-    @endif
-
-    
+    @endauth
 @endsection

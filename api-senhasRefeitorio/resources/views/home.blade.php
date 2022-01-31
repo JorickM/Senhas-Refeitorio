@@ -17,10 +17,6 @@
                         @endif
 
                     {{ __('You are logged in!') }}
-                    
-    <div class="col-lg-1">
-            <a class="btn btn-success" href="{{ route('logins.create') }}">Add</a>
-        </div>
                 </div>
                 
 
