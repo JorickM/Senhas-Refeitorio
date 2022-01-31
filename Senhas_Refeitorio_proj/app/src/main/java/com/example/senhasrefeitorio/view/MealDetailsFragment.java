@@ -53,13 +53,14 @@ public class MealDetailsFragment extends Fragment {
 
         ImageView imgFood = view.findViewById(R.id.imgFood);
 
-        try {
+
             MealDetailsFragmentArgs args = MealDetailsFragmentArgs.fromBundle(getArguments());
             this.codMeal = args.getCodMeal();
 
             this.mViewModel.getOneMeal(codMeal).observe(getActivity(), new Observer<Meal>() {
                 @Override
                 public void onChanged(Meal meal) {
+                    try {
                     txtMainDish.setText(meal.getMainDish());
                     txtSoup.setText(meal.getSoup());
                     txtDesert.setText(meal.getDesert());
@@ -68,12 +69,12 @@ public class MealDetailsFragment extends Fragment {
                     mealUrl = meal.getUrl();
 
                     //Meal meal = meal; Não, dá, então arranjamos esta maneira
+                    }catch(Exception e) {
+                        Log.i("MEAL_DETAIL_FRAGMENT", "Error");
+                    }
                 }
             });
-        }
-        catch(Exception e) {
-            Log.i("MEAL_DETAIL_FRAGMENT", "Error");
-        }
+
 
         Button btnBack = view.findViewById(R.id.btnBack);
         Button btnBuy = view.findViewById(R.id.btnBuy);
