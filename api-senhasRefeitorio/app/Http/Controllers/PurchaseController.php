@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Purchase;
+use App\Models\Meal;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -16,14 +17,27 @@ class PurchaseController extends Controller
 
     public function showAll()
     {
-        $purchase = Purchase::get()->toJson(JSON_PRETTY_PRINT);
-        return response($purchase, 200);
+        $purchases = Purchase::get();
+        foreach($purchases as $purchase) {
+          $purchase->meal = Meal::find($purchase->codMeal);
+        }
+        return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
+    }
+
+    public function getPurchasesForUser($codUser)
+    {
+        $purchases = Purchase::where("codUser", $codUser)->get();
+        foreach($purchases as $purchase) {
+          $purchase->meal = Meal::find($purchase->codMeal);
+        }
+        return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
     }
 
     public function show(Purchase $purchase)
     {
         return view('purchases.view',compact('purchase'));
     }
+
     public function create()
     {
       return view('purchases.create');
@@ -81,12 +95,6 @@ class PurchaseController extends Controller
             ], 404);
           }
       }
-
-
-
-
-
-
 
     /**
      * Show the form for editing the specified resource.
