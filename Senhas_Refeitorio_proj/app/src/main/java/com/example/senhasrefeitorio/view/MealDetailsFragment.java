@@ -53,7 +53,6 @@ public class MealDetailsFragment extends Fragment {
 
         ImageView imgFood = view.findViewById(R.id.imgFood);
 
-
             MealDetailsFragmentArgs args = MealDetailsFragmentArgs.fromBundle(getArguments());
             this.codMeal = args.getCodMeal();
 
@@ -66,7 +65,8 @@ public class MealDetailsFragment extends Fragment {
                     txtDesert.setText(meal.getDesert());
 
                     mealName = meal.getMainDish();
-                    mealUrl = meal.getUrl();
+
+                    Glide.with(imgFood).load(meal.getUrl()).into(imgFood);
 
                     //Meal meal = meal; Não, dá, então arranjamos esta maneira
                     }catch(Exception e) {
@@ -79,7 +79,7 @@ public class MealDetailsFragment extends Fragment {
         Button btnBack = view.findViewById(R.id.btnBack);
         Button btnBuy = view.findViewById(R.id.btnBuy);
 
-        Glide.with(this).load(mealUrl).into(imgFood);
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

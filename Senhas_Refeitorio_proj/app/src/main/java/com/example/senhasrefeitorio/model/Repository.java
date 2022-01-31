@@ -142,6 +142,7 @@ public class Repository {
     }
 
     public void updatePurchaseList() {
+        updateMealList();
         PurchaseService service = Datasource.getPurchaseService();
 
         service.getPurchases().enqueue(new Callback<List<Purchase>>() {
@@ -197,5 +198,26 @@ public class Repository {
 
     public LiveData<List<PurchaseWithMeal>> getPurchaseWithUnusedMeal(long codUser) {
         return this.purchaseDao.getPurchaseWithUnusedMeal(codUser);
+    }
+
+    public void updatePurchase(Purchase newPurchase) {
+        PurchaseService service = Datasource.getPurchaseService();
+
+        service.updatePurchase(newPurchase.getCodPurchase(), newPurchase).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()) {
+                    Boolean result = response.body();
+                } else {
+                    // Resposta mal sucedida
+                    // Snakbar
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
+            }
+        });
     }
 }

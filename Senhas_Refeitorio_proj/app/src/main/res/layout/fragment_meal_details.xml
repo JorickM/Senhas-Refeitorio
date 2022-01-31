@@ -9,15 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#AFC90E"
+        android:background="@drawable/gradient"
         tools:context=".view.MainMenuActivity">
 
         <ImageView
             android:id="@+id/imgFood"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="400dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +27,6 @@
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="400dp"
             android:text="Voltar"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF"
@@ -36,14 +34,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.189"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.501" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDesertPurchase" />
 
         <Button
             android:id="@+id/btnBuy"
             android:layout_width="110dp"
             android:layout_height="50dp"
-            android:layout_marginTop="400dp"
             android:layout_marginEnd="16dp"
             android:text="Comprar"
             android:textColor="#000000"
@@ -52,35 +48,85 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.817"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.501" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDesertPurchase" />
 
         <TextView
             android:id="@+id/txtMainDishPurchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
             android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgFood" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/txtSoupPurchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
             android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtMainDishPurchase" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/txtDesertPurchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
             android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@color/white"
+            android:fontFamily="sans-serif-black"
+            android:text="Prato Principal:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgFood" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@color/white"
+            android:fontFamily="sans-serif-black"
+            android:text="Sopa:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMainDishPurchase" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@color/white"
+            android:fontFamily="sans-serif-black"
+            android:text="Sobremesa:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtSoupPurchase" />

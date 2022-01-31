@@ -1,25 +1,15 @@
 package com.example.senhasrefeitorio.view;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.Meal;
-import com.example.senhasrefeitorio.model.Purchase;
-import com.example.senhasrefeitorio.model.User;
-import com.example.senhasrefeitorio.model.database.AppDatabase;
-import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
-import com.example.senhasrefeitorio.viewmodel.LoginFragmentViewModel;
-import com.example.senhasrefeitorio.viewmodel.MealFragmentViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,8 +67,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
         this.root = itemView;
-        this.textViewMeal = this.root.findViewById(R.id.txtMeal);
-        this.textViewSoup = this.root.findViewById(R.id.txtSoup);
+        this.textViewMeal = this.root.findViewById(R.id.textViewDate);
+        this.textViewSoup = this.root.findViewById(R.id.textViewName);
         this.textViewDesert = this.root.findViewById(R.id.txtDesert);
     }
 }

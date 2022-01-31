@@ -9,14 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#AFC90E"
+        android:background="@drawable/gradient"
         tools:context=".view.LoginActivity">
 
         <Button
             android:id="@+id/button"
             android:layout_width="100dp"
             android:layout_height="55dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="100dp"
             android:text="Login"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF"
@@ -26,9 +26,11 @@
 
         <EditText
             android:id="@+id/editTextEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -37,6 +39,7 @@
             android:textColorHighlight="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textColorLink="#FFFFFF"
+            android:drawableLeft="@drawable/ic_action_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -44,9 +47,11 @@
 
         <EditText
             android:id="@+id/editTextPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
@@ -55,19 +60,21 @@
             android:textColorHighlight="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textColorLink="#FFFFFF"
+            android:drawableLeft="@drawable/ic_action_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="145dp"
+            android:layout_height="130dp"
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/logoipbeja" />
+            app:srcCompat="@drawable/logoipbeja" />
 
         <ProgressBar
             android:id="@+id/progressBar"

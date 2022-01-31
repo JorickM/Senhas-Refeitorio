@@ -42,7 +42,6 @@ public class MainMenuFragment extends Fragment {
 
         ImageView imageView;
         imageView = view.findViewById(R.id.imgUser);
-
         Glide.with(this).load(userFromLogin.getUrl()).into(imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {

@@ -16,9 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.senhasrefeitorio.R;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.viewmodel.LoginFragmentViewModel;

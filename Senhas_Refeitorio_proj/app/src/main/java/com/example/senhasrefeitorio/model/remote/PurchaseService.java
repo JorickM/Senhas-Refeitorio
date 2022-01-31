@@ -10,6 +10,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface PurchaseService {
     @GET("purchases/all")
@@ -17,4 +19,7 @@ public interface PurchaseService {
 
     @POST("purchases/")
     Call<Boolean>setPurchase(@Body Purchase purchase);
+
+    @PUT("purchases/{id}")
+    Call<Boolean>updatePurchase(@Path("id") long codPurchase, @Body Purchase purchase);
 }
