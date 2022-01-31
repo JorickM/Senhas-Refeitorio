@@ -20,7 +20,6 @@ class CreateLoginsTable extends Migration
             $table->string('email');
             $table->string('password');           
             $table->string('url');
-            $table->integer('type');
             $table->timestamps();
         });
     }

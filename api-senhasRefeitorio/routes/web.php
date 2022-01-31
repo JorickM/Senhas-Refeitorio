@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WeekdayController;
+use App\Http\Controllers\MealController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('logins', LoginController::class);
+Route::resource('weekdays', WeekdayController::class);
+Route::resource('meals', MealController::class);
+//Route::get('logins/{codUser}/edit', LoginController::class);
+//Route::get('/logins', LoginController::class, 'index');

@@ -12,10 +12,18 @@ class MealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function getAllMeals()
     {
         $meal = Meal::get()->toJson(JSON_PRETTY_PRINT);
         return response($meal, 200);
+    }
+    
+    public function index()
+    {
+        $meals = Meal::all();
+        return view('meals.list', compact('meals','meals'));
     }
 
     /**
@@ -23,19 +31,9 @@ class MealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $meal = new Meal;
-        $meal->codWeekday = $request->codWeekday;
-        $meal->mainDish = $request->mainDish;
-        $meal->soup = $request->soup;
-        $meal->desert = $request->desert;
-        $meal->url = $request->url;
-        $meal->save();
-    
-        return response()->json([
-            "message" => "Meal record created"
-        ], 201);
+      return view('meals.create');
     }
 
     /**
@@ -46,26 +44,35 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+      $request->validate([
+          'txtCodWeekday'=>'required',
+          'txtMainDish' => 'required',
+          'txtSoup' => 'required',
+          'txtDesert' => 'required',
+          'txtUrl' => 'required'
+      ]);
 
+      $meal = new Meal([
+          'codWeekday' => $request->get('txtCodWeekday'),
+          'mainDish'=> $request->get('txtMainDish'),
+          'soup'=> $request->get('txtSoup'),
+          'desert'=> $request->get('txtDesert'),
+          'url'=> $request->get('txtUrl')
+      ]);
+
+      $meal->save();
+      return redirect('/meals')->with('success', 'meal has been added');
+  }
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function show($codMeal)
+    public function show(Meal $meal)
     {
-        if (Meal::where('codMeal', $codMeal)->exists()) {
-            $meal = Meal::where('codMeal', $codMeal)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($meal, 200);
-          } else {
-            return response()->json([
-              "message" => "Student not found"
-            ], 404);
-          }
-      }
+        return view('meals.view',compact('meal'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -75,7 +82,7 @@ class MealController extends Controller
      */
     public function edit(Meal $meal)
     {
-        //
+      return view('meals.edit',compact('meal'));
     }
 
     /**
@@ -85,26 +92,26 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request ,$codMeal)
     {
-        if (Meal::where('codMeal', $request->codMeal)->exists()) {
-            $meal = Meal::where('codMeal', $request->codMeal)->first();
-            $meal->codWeekday = is_null($request->codWeekday) ? $meal->codWeekday : $request->codWeekday;
-            $meal->mainDish = is_null($request->mainDish) ? $meal->mainDish : $request->mainDish;
-            $meal->soup = is_null($request->soup) ? $meal->soup : $request->soup;
-            $meal->desert = is_null($request->desert) ? $meal->desert : $request->desert;
-            $meal->url = is_null($request->url) ? $meal->url : $request->url;
-            $meal->save();
-    
-            return response()->json([
-                "message" => "records updated successfully"
-            ], 200);
-            } else {
-            return response()->json([
-                "message" => "Student not found"
-            ], 404);
-            
-        }
+          $request->validate([
+            'txtCodWeekday'=>'required',
+            'txtMainDish'=> 'required',
+            'txtSoup' => 'required',
+            'txtDesert' => 'required',
+            'txtUrl' => 'required'
+          ]);
+
+        $meal = Meal::find($codMeal);
+        $meal->codWeekday = $request->get('txtCodWeekday');
+        $meal->mainDish = $request->get('txtMainDish');
+        $meal->soup = $request->get('txtSoup');
+        $meal->desert = $request->get('txtDesert');
+        $meal->url = $request->get('txtUrl');
+
+        $meal->update();
+
+        return redirect('/meals')->with('success', 'Meal updated successfully');
     }
 
     /**
@@ -113,19 +120,9 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function destroy($codMeal)
-    {
-        if(Meal::where('codMeal', $codMeal)->exists()) {
-            $meal = Meal::where('codMeal', $codMeal);
-            $meal->delete();
-    
-            return response()->json([
-              "message" => "records deleted"
-            ], 202);
-          } else {
-            return response()->json([
-              "message" => "Meal not found"
-            ], 404);
-          }
-    }
+    public function destroy(Meal $meal)
+    {   
+        $meal->delete();
+        return redirect('/meals')->with('success', 'Meal deleted successfully');
+      }
 }

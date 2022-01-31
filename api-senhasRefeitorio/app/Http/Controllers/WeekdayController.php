@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Weekday; 
 use Illuminate\Http\Request;
+use WeakMap;
 
 class WeekdayController extends Controller
 {
@@ -14,6 +15,12 @@ class WeekdayController extends Controller
      */
     public function index()
     {
+     $weekdays = Weekday::all();
+     return view('weekdays.list', compact('weekdays','weekdays'));
+    }
+
+    public function getAllWeekdays()
+    {
         $weekday = Weekday::get()->toJson(JSON_PRETTY_PRINT);
         return response($weekday, 200);
     }
@@ -23,17 +30,11 @@ class WeekdayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $weekday = new Weekday;
-        $weekday->name = $request->name;
-        $weekday->date = $request->date;
-        $weekday->save();
-    
-        return response()->json([
-            "message" => "WeekDay record created"
-        ], 201);
+      return view('weekdays.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,8 +44,19 @@ class WeekdayController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+      $request->validate([
+          'txtName'=>'required',
+          'txtDate' => 'required'
+      ]);
+
+      $weekday = new Weekday([
+          'name' => $request->get('txtName'),
+          'date'=> $request->get('txtDate')
+      ]);
+
+      $weekday->save();
+      return redirect('/weekdays')->with('success', 'Weekday has been added');
+  }
 
     /**
      * Display the specified resource.
@@ -52,17 +64,10 @@ class WeekdayController extends Controller
      * @param  \App\Models\Weekday  $weekday
      * @return \Illuminate\Http\Response
      */
-    public function show($codWeekday)
+    public function show(Weekday $weekday)
     {
-        if (Weekday::where('codWeekday', $codWeekday)->exists()) {
-            $codWeekday = Weekday::where('codWeekday', $codWeekday)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($codWeekday, 200);
-          } else {
-            return response()->json([
-              "message" => "WeekDay not found"
-            ], 404);
-          }
-      }
+        return view('weekdays.view',compact('weekday'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -72,7 +77,7 @@ class WeekdayController extends Controller
      */
     public function edit(Weekday $weekday)
     {
-
+      return view('weekdays.edit',compact('weekday'));
     }
 
     /**
@@ -82,23 +87,21 @@ class WeekdayController extends Controller
      * @param  \App\Models\Weekday  $weekday
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request ,$codWeekday)
     {
-        if (Weekday::where('codWeekday', $request->codWeekday)->exists()) {
-            $weekday = Weekday::where('codWeekday', $request->codWeekday);
-            $weekday->name = is_null($request->name) ? $weekday->name : $request->name;
-            $weekday->date = is_null($request->date) ? $weekday->date : $request->date;
-           
-            $weekday->save();
-            return response()->json([
-                "message" => "records updated successfully"
-            ], 200);
-            } else {
-            return response()->json([
-                "message" => "WeekDay not found"
-            ], 404);
-            
-        }
+          $request->validate([
+            'txtName'=>'required',
+            'txtDate'=> 'required',
+           ]);
+
+        $weekday = Weekday::find($codWeekday);
+        $weekday->name = $request->get('txtName');
+        $weekday->date = $request->get('txtDate');
+       
+
+        $weekday->update();
+
+        return redirect('/weekdays')->with('success', 'Weekday updated successfully');
     }
 
     /**
@@ -107,19 +110,9 @@ class WeekdayController extends Controller
      * @param  \App\Models\Weekday  $weekday
      * @return \Illuminate\Http\Response
      */
-    public function destroy($codWeekday)
-    {
-        if(Weekday::where('codWeekday', $codWeekday)->exists()) {
-            $weekday = Weekday::where('codPurchase', $codPurchase);
-            $weekday->delete();
-    
-            return response()->json([
-              "message" => "records deleted"
-            ], 202);
-          } else {
-            return response()->json([
-              "message" => "WeekDay not found"
-            ], 404);
-          }
-        }
+    public function destroy(Weekday $weekday)
+    {   
+        $weekday->delete();
+        return redirect('/weekdays')->with('success', 'Weekday deleted successfully');
+      }
 }

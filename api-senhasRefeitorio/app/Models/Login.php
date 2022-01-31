@@ -13,5 +13,5 @@ class Login extends Model
 
     protected $table = 'logins';
 
-    protected $fillable = ['name', 'lastName', 'email','password', 'url', 'type'];
+    protected $fillable = ['name', 'lastName', 'email','password', 'url'];
 }
