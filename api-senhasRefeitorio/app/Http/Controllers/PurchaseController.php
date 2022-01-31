@@ -17,10 +17,10 @@ class PurchaseController extends Controller
 
     public function showAll()
     {
-        $purchases = Purchase::get();
-        foreach($purchases as $purchase) {
-          $purchase->meal = Meal::find($purchase->codMeal);
-        }
+        $purchases = Purchase::all();
+       // foreach($purchases as $purchase) {
+         // $purchase->meal = Meal::find($purchase->codMeal);
+       // }
         return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
     }
     
