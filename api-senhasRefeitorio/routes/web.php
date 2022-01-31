@@ -6,6 +6,7 @@ use App\Http\Controllers\WeekdayController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PurchaseController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,10 @@ use App\Http\Controllers\PurchaseController;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,3 +32,4 @@ Route::resource('meals', MealController::class);
 Route::resource('purchases', PurchaseController::class);
 //Route::get('logins/{codUser}/edit', LoginController::class);
 //Route::get('/logins', LoginController::class, 'index');
+
