@@ -104,7 +104,7 @@ public class MealDetailsFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         User user = SessionManager.getActiveSession(getActivity());
-                        Purchase newPurchase = new Purchase(0,codMeal, user.getCodUser(), false);
+                        Purchase newPurchase = new Purchase(0,codMeal, user.getCodUser(), 0);
                         mViewModel.addPurchase(newPurchase);
                         dialog.dismiss();
                         goToMenu();

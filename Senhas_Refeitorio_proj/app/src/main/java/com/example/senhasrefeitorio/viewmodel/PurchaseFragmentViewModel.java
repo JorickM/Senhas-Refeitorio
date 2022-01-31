@@ -21,8 +21,8 @@ public class PurchaseFragmentViewModel extends AndroidViewModel {
         this.repository = new Repository(application);
     }
 
-    public void updatePurchaseList() {
-        this.repository.updatePurchaseList();
+    public void updatePurchaseList(Long codUser) {
+        this.repository.updatePurchaseList(codUser);
     }
 
     public LiveData<List<PurchaseWithMeal>> getUsedPurchases(long codUser) {

@@ -141,11 +141,13 @@ public class Repository {
         });
     }
 
-    public void updatePurchaseList() {
+    public void updatePurchaseList(Long codUser) {
+        updateWeekDayList();
         updateMealList();
+
         PurchaseService service = Datasource.getPurchaseService();
 
-        service.getPurchases().enqueue(new Callback<List<Purchase>>() {
+        service.getPurchases(codUser).enqueue(new Callback<List<Purchase>>() {
             @Override
             public void onResponse(Call<List<Purchase>> call, Response<List<Purchase>> response) {
                 if (response.isSuccessful()) {
@@ -155,6 +157,8 @@ public class Repository {
                         public void run() {
                             for (Purchase purchase : purchases) {
                                 purchaseDao.add(purchase);
+
+                                //mealDao.add(purchase.getMeal());
                             }
                         }
                     }).start();
@@ -198,26 +202,5 @@ public class Repository {
 
     public LiveData<List<PurchaseWithMeal>> getPurchaseWithUnusedMeal(long codUser) {
         return this.purchaseDao.getPurchaseWithUnusedMeal(codUser);
-    }
-
-    public void updatePurchase(Purchase newPurchase) {
-        PurchaseService service = Datasource.getPurchaseService();
-
-        service.updatePurchase(newPurchase.getCodPurchase(), newPurchase).enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                if (response.isSuccessful()) {
-                    Boolean result = response.body();
-                } else {
-                    // Resposta mal sucedida
-                    // Snakbar
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-
-            }
-        });
     }
 }

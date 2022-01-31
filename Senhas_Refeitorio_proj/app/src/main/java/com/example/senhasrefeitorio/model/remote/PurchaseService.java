@@ -12,14 +12,12 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface PurchaseService {
-    @GET("purchases/all")
-    Call<List<Purchase>> getPurchases();
+    @GET("purchases/byUser/{codUser}")
+    Call<List<Purchase>> getPurchases(@Path("codUser") long codUser);
 
     @POST("purchases/")
     Call<Boolean>setPurchase(@Body Purchase purchase);
-
-    @PUT("purchases/{id}")
-    Call<Boolean>updatePurchase(@Path("id") long codPurchase, @Body Purchase purchase);
 }

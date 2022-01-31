@@ -30,6 +30,7 @@ public class PurchasesFragment extends Fragment {
 
     private PurchaseFragmentViewModel mViewModel;
     private PurchaseAdapter adapter;
+    User user;
 
     public static void updatePurchase(PurchaseWithMeal purchase, Long codPurchase) {
 
@@ -51,7 +52,7 @@ public class PurchasesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(this.adapter);
 
-        User user = SessionManager.getActiveSession(getActivity());
+         this.user = SessionManager.getActiveSession(getActivity());
 
         this.mViewModel.getPurchaseWithUnusedMeal(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
             @Override
@@ -64,6 +65,6 @@ public class PurchasesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        this.mViewModel.updatePurchaseList();
+        mViewModel.updatePurchaseList(this.user.getCodUser());
     }
 }

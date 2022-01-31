@@ -2,6 +2,7 @@ package com.example.senhasrefeitorio.model;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {@ForeignKey(entity = Meal.class,
@@ -13,10 +14,12 @@ public class Purchase {
     @PrimaryKey
     private long codPurchase;
     private long codMeal;
+    @Ignore
+    private Meal meal;
     private long codUser;
-    private boolean flgUsed;
+    private Integer flgUsed;
 
-    public Purchase(long codPurchase, long codMeal, long codUser, boolean flgUsed) {
+    public Purchase(long codPurchase, long codMeal, long codUser, Integer flgUsed) {
         this.codPurchase = codPurchase;
         this.codMeal = codMeal;
         this.codUser = codUser;
@@ -47,11 +50,11 @@ public class Purchase {
         this.codUser = codUser;
     }
 
-    public boolean isFlgUsed() {
+    public Integer getFlgUsed() {
         return flgUsed;
     }
 
-    public void setFlgUsed(boolean flgUsed) {
+    public void setFlgUsed(Integer flgUsed) {
         this.flgUsed = flgUsed;
     }
 }
