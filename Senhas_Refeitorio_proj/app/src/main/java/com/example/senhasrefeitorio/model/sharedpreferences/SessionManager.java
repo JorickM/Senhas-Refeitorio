@@ -16,8 +16,6 @@ public class SessionManager {
     private static final String KEY_USER_NAME = "userName";
     private static final String KEY_USER_LAST_NAME = "userLastName";
     private static final String KEY_USER_URL = "userURL";
-    private static final String KEY_USER_TYPE = "userType";
-    ;
 
     private static SharedPreferences getSharedPreferences(Context context) {
         if (sharedPreferences == null) {
@@ -38,8 +36,7 @@ public class SessionManager {
             String lastName = sharedPreferences.getString(KEY_USER_LAST_NAME, "");
             String email = sharedPreferences.getString(KEY_USER_EMAIL, "");
             String url = sharedPreferences.getString(KEY_USER_URL, "");
-            int type = sharedPreferences.getInt(KEY_USER_TYPE, 0);
-            User user = new User(code, name, lastName, email, "", url, type);
+            User user = new User(code, name, lastName, email, "", url);
             return user;
         }
         return null;
@@ -52,7 +49,6 @@ public class SessionManager {
                 .putString(KEY_USER_LAST_NAME, user.getLastName())
                 .putString(KEY_USER_EMAIL, user.getEmail())
                 .putString(KEY_USER_URL, user.getUrl())
-                .putInt(KEY_USER_TYPE, user.getTypeUser())
                 .apply();
     }
 //KEY_USER_CODE , user.getCodUser()

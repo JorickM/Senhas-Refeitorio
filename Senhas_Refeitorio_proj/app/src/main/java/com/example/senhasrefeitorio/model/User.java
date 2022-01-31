@@ -13,16 +13,14 @@ public class User {
     private String email;
     private String password;
     private String url;
-    private int typeUser;
 
-    public User(long codUser, String name, String lastName, String email, String password, String url, int typeUser) {
+    public User(long codUser, String name, String lastName, String email, String password, String url) {
         this.codUser = codUser;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.url = url;
-        this.typeUser = typeUser;
     }
 
     @Ignore
@@ -78,13 +76,4 @@ public class User {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    public int getTypeUser() {
-        return typeUser;
-    }
-
-    public void setTypeUser(int typeUser) {
-        this.typeUser = typeUser;
-    }
-
 }
