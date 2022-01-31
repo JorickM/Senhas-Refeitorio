@@ -15,13 +15,19 @@ class PurchaseController extends Controller
       return view('purchases.list', compact('purchases','purchases'));
     }
 
-    public function showAll()
+   /* public function showAll()
     {
         $purchases = Purchase::get();
         foreach($purchases as $purchase) {
           $purchase->meal = Meal::find($purchase->codMeal);
         }
         return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
+    }*/
+
+    public function showAll()
+    {
+      $purchases = Purchase::all();
+      return view('purchases.list', compact('purchases','purchases'));
     }
 
     public function getPurchasesForUser($codUser)
