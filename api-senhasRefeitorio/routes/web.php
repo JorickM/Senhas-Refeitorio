@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WeekdayController;
 use App\Http\Controllers\MealController;
+use App\Http\Controllers\PurchaseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +24,6 @@ Route::get('/', function () {
 Route::resource('logins', LoginController::class);
 Route::resource('weekdays', WeekdayController::class);
 Route::resource('meals', MealController::class);
+Route::resource('purchases', PurchaseController::class);
 //Route::get('logins/{codUser}/edit', LoginController::class);
 //Route::get('/logins', LoginController::class, 'index');

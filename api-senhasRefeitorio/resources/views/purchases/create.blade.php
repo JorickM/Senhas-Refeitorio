@@ -31,9 +31,9 @@
             <input type="text" class="form-control" id="txtCodUser" placeholder="Enter User Code" name="txtCodUser">
         </div>
         <div class="form-group">
-        <input type="radio" name="flgUsed" value=0 id="1" checked required />
+        <input type="radio" name="flgUsed" value=0 id="r1" checked required />
         <label for="r1">Available</label>
-         <input type="radio" name="tipo" value="docente" id="2" required />
+         <input type="radio" name="flgUsed" value="1" id="r2" required />
          <label for="r2">Used</label>
     </div>
         <button type="submit" class="btn btn-default">Submit</button>

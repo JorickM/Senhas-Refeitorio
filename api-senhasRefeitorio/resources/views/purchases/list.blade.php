@@ -1,12 +1,12 @@
-@extends('meals.layouts.app')
+@extends('purchases.layouts.app')
 
 @section('content')
     <div class="row">
         <div class="col-lg-11">
-                <h2>Show Meals</h2>
+                <h2>Show Purchases</h2>
         </div>
         <div class="col-lg-1">
-            <a class="btn btn-success" href="{{ route('meals.create') }}">Add</a>
+            <a class="btn btn-success" href="{{ route('purchases.create') }}">Add</a>
         </div>
     </div>
 
@@ -19,11 +19,9 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Weekday Code</th>
-            <th>Main Dish</th>
-            <th>Soup</th>
-            <th>Desert</th>
-            <th>Url</th>
+            <th>Meal Code</th>
+            <th>User Code</th>
+            <th>FlgUsed</th>
 
 
 
@@ -32,19 +30,17 @@
         @php
             $i = 0;
         @endphp
-        @foreach ($meals as $meal)
+        @foreach ($purchases as $purchase)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $meal->codWeekday }}</td>
-                <td>{{ $meal->mainDish }}</td>
-                <td>{{ $meal->soup }}</td>
-                <td>{{ $meal->desert }}</td>
-                <td>{{ $meal->url }}</td>
+                <td>{{ $purchase->codMeal }}</td>
+                <td>{{ $purchase->codUser }}</td>
+                <td>{{ $purchase->flgUsed }}</td>
 
                 <td>
-                    <form action="{{ route('meals.destroy',$meal->codMeal) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('meals.show',$meal->codMeal) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('meals.edit',$meal->codMeal) }}">Edit</a>
+                    <form action="{{ route('purchases.destroy',$purchase->codPurchase) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('purchases.show',$purchase->codPurchase) }}">Show</a>
+                        <a class="btn btn-primary" href="{{ route('purchases.edit',$purchase->codPurchase) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
