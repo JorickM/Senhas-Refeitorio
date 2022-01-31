@@ -24,10 +24,10 @@ class PurchaseController extends Controller
         return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
     }*/
 
-    public function showAll()
+    public function getAllPurchases()
     {
-      $purchases = Purchase::all();
-      return view('purchases.list', compact('purchases','purchases'));
+        $purchase = Purchase::get()->toJson(JSON_PRETTY_PRINT);
+        return response($meal, 200);
     }
 
     public function getPurchasesForUser($codUser)
