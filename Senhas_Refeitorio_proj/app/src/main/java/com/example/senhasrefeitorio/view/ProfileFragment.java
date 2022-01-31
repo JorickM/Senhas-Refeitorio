@@ -34,7 +34,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         this.viewModel = new ViewModelProvider(this).get(ProfileFragmentViewModel.class);
         this.mLoginViewModel = new ViewModelProvider(this).get(LoginFragmentViewModel.class);
 
@@ -52,6 +51,15 @@ public class ProfileFragment extends Fragment {
                 mLoginViewModel.logOut();
                 NavController navController = NavHostFragment.findNavController(ProfileFragment.this);
                 navController.navigate(R.id.action_profileFragment_to_loginFragment);
+            }
+        });
+
+        Button button = view.findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = NavHostFragment.findNavController(ProfileFragment.this);
+                navController.navigate(R.id.action_profileFragment_to_consumedPurchaseFragment);
             }
         });
     }

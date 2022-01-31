@@ -15,30 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.senhasrefeitorio.R;
-import com.example.senhasrefeitorio.model.Meal;
-import com.example.senhasrefeitorio.model.Purchase;
 import com.example.senhasrefeitorio.model.PurchaseWithMeal;
 import com.example.senhasrefeitorio.model.User;
 import com.example.senhasrefeitorio.model.sharedpreferences.SessionManager;
-import com.example.senhasrefeitorio.viewmodel.MealDetailsFragmentViewModel;
-import com.example.senhasrefeitorio.viewmodel.MealFragmentViewModel;
 import com.example.senhasrefeitorio.viewmodel.PurchaseFragmentViewModel;
 
 import java.util.List;
 
-public class PurchasesFragment extends Fragment {
-
-    private PurchaseFragmentViewModel mViewModel;
-    private PurchaseAdapter adapter;
-
-    public static void updatePurchase(PurchaseWithMeal purchase, Long codPurchase) {
-
-    }
+public class ConsumedPurchaseFragment extends Fragment {
+    PurchaseFragmentViewModel mViewModel;
+    ConsumedPurchaseAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_purcheses, container, false);
+        return inflater.inflate(R.layout.fragment_consumed_purchase, container, false);
     }
 
     @Override
@@ -46,24 +37,18 @@ public class PurchasesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(PurchaseFragmentViewModel.class);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        this.adapter = new PurchaseAdapter(getActivity());
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView3);
+        this.adapter = new ConsumedPurchaseAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(this.adapter);
 
         User user = SessionManager.getActiveSession(getActivity());
 
-        this.mViewModel.getPurchaseWithUnusedMeal(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
+        this.mViewModel.getUsedPurchases(user.getCodUser()).observe(getActivity(), new Observer<List<PurchaseWithMeal>>() {
             @Override
             public void onChanged(List<PurchaseWithMeal> purchaseList) {
-                PurchasesFragment.this.adapter.updateList(purchaseList);
+                ConsumedPurchaseFragment.this.adapter.updateList(purchaseList);
             }
         });
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        this.mViewModel.updatePurchaseList();
     }
 }

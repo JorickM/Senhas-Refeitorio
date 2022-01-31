@@ -69,5 +69,5 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
-    implementation "androidmads.library.qrgenearator:QRGenearator:1.0.3"
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
 }

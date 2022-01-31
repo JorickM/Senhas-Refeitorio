@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_consumedPurchaseFragment"
+            app:destination="@id/consumedPurchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/weekDay"
@@ -79,4 +82,9 @@
         android:name="com.example.senhasrefeitorio.view.PurchasesFragment"
         android:label="fragment_purcheses"
         tools:layout="@layout/fragment_purcheses" />
+    <fragment
+        android:id="@+id/consumedPurchaseFragment"
+        android:name="com.example.senhasrefeitorio.view.ConsumedPurchaseFragment"
+        android:label="fragment_consumed_purchase"
+        tools:layout="@layout/fragment_consumed_purchase" />
 </navigation>
