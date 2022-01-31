@@ -46,7 +46,7 @@ Route::get('meals',[MealController::class,'getAllMeals']);
 //Route::put('meals/',[MealController::class,'update']);
 //Route::delete('meals/{codMeal}',[MealController::class,'destroy']);
 
-Route::get('purchases/all',[PurchaseController::class,'showAll']);
+Route::get('purchases/all',[PurchaseController::class,'getAllPurchases']);
 Route::get('purchases/byUser/{codUser}',[PurchaseController::class,'getPurchasesForUser']);
 //Route::get('purchases/{codPurchase}',[PurchaseController::class,'show']);
 Route::post('purchases',[PurchaseController::class,'addNew']);

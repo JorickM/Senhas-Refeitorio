@@ -23,7 +23,7 @@ class PurchaseController extends Controller
         }
         return response($purchases->toJson(JSON_PRETTY_PRINT), 200);
     }
-
+    
    /* public function showAll()
     {
       $purchases = Purchase::all();
