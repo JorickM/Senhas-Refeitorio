@@ -21,10 +21,11 @@ use App\Http\Controllers\PurchaseController;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::resource('logins', LoginController::class);
 Route::resource('weekdays', WeekdayController::class);
@@ -32,4 +33,3 @@ Route::resource('meals', MealController::class);
 Route::resource('purchases', PurchaseController::class);
 //Route::get('logins/{codUser}/edit', LoginController::class);
 //Route::get('/logins', LoginController::class, 'index');
-

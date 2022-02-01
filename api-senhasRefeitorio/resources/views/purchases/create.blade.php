@@ -1,8 +1,13 @@
 @extends('purchases.layouts.app')
 
 @section('content')
+
+@if (Route::has('login'))
+<div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+@auth
+
     <div class="row">
-        <div class="col-lg-11">
+    <div class="col-lg-11 px-5">
             <h2>Add New Purchase</h2>
         </div>
         <div class="col-lg-1">
@@ -20,6 +25,10 @@
             </ul>
         </div>
     @endif
+
+
+
+    <div class="container px-4 px-lg-2 my-5">
     <form action="{{ route('purchases.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -36,6 +45,19 @@
          <input type="radio" name="flgUsed" value="1" id="r2" required />
          <label for="r2">Used</label>
     </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+    <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</div>
+    @else
+    <div class="container px-4 px-lg-2 my-5">
+        <div class="card-body">
+            You are not logged in!
+            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline btn btn-info">Log in</a>
+        </div>
+    </div>
+    @endauth
+</div>
+@endif
+
 @endsection
